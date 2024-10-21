@@ -25,6 +25,7 @@ public class SocketHandle implements Runnable {
                 if (message == null) {
                     break;
                 }
+                
                 // Đăng nhập thành công
                 if (message.getType().equals("LOGIN_SUCCESS")) {
                     System.out.println("Đăng nhập thành công");
