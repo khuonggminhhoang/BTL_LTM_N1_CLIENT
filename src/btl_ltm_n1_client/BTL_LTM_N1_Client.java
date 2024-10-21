@@ -29,7 +29,7 @@ public class BTL_LTM_N1_Client {
             ObjectOutputStream oos = new ObjectOutputStream(serverSocket.getOutputStream());
             ObjectInputStream ois = new ObjectInputStream(serverSocket.getInputStream());
 
-            Users user = new Users("nguyenhaidang", "123456");
+            Users user = new Users("hoangminhkhuong", "123456");
             Message sendMessage = new Message("LOGIN_REQUEST", user);
             oos.writeObject(sendMessage);
             System.out.println("Da gui goi tin: " + sendMessage);
