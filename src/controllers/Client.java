@@ -64,10 +64,10 @@ public class Client{
     }
     
     public void initView() {
-        // loginFrm = new LoginFrm();
-        // loginFrm.setVisible(true);
-        registerFrm =new RegisterFrm();
-        registerFrm.setVisible(true);
+        loginFrm = new LoginFrm();
+        loginFrm.setVisible(true);
+        // registerFrm =new RegisterFrm();
+        // registerFrm.setVisible(true);
         socketHandle = new SocketHandle();
         new Thread(socketHandle).start(); // Chạy SocketHandle trong một thread riêng
     }

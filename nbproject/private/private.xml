@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/BTL_LTM_N1_Client/src/system/Config.java</file>
-            <file>file:/D:/BTL_LTM_N1_Client/src/btl_ltm_n1_client/BTL_LTM_N1_Client.java</file>
-            <file>file:/D:/BTL_LTM_N1_Client/src/views/LoginFrm.java</file>
-            <file>file:/D:/BTL_LTM_N1_Client/src/model/Users.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/BTL_LTM_N1_CLIENT/src/controllers/Client.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/BTL_LTM_N1_CLIENT/src/btl_ltm_n1_client/BTL_LTM_N1_Client.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/BTL_LTM_N1_CLIENT/src/views/LoginFrm.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/BTL_LTM_N1_CLIENT/src/views/HomePageFrm.java</file>
+            <file>file:/C:/Users/PC/Documents/NetBeansProjects/BTL_LTM_N1_CLIENT/src/views/RegisterFrm.java</file>
         </group>
     </open-files>
 </project-private>
