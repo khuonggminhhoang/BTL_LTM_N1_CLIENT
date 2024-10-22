@@ -18,6 +18,7 @@ public class Client{
     public static Users user;
     public static LoginFrm loginFrm;
     public static RegisterFrm registerFrm;
+    public static HomepageFrm homepageFrm;
     public static SocketHandle socketHandle;
     
     public Client(){
@@ -34,6 +35,9 @@ public class Client{
                 case REGISTER:
                     registerFrm=new RegisterFrm();
                     registerFrm.setVisible(true);
+                case HOMEPAGE:
+                    homepageFrm=new HomepageFrm();
+                    homepageFrm.setVisible(true);
             }
         }
     }
@@ -48,6 +52,9 @@ public class Client{
                     case REGISTER:
                         registerFrm.dispose();
                         break;
+                    case HOMEPAGE:
+                        homepageFrm.dispose();
+                        break;
             }
         }
     }
@@ -56,6 +63,7 @@ public class Client{
     public static void closeAllViews(){
         if(loginFrm!=null) loginFrm.dispose();
         if(registerFrm!=null) registerFrm.dispose();
+        if(homepageFrm!=null) homepageFrm.dispose();
     }
     
     
@@ -68,6 +76,9 @@ public class Client{
         loginFrm.setVisible(true);
         // registerFrm =new RegisterFrm();
         // registerFrm.setVisible(true);
+        // homepageFrm=new HomepageFrm();
+        // homepageFrm.setVisible(true);
+        
         socketHandle = new SocketHandle();
         new Thread(socketHandle).start(); // Chạy SocketHandle trong một thread riêng
     }

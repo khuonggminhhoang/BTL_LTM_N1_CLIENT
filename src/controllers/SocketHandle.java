@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.*;
 import java.net.Socket;
+import javax.swing.JOptionPane;
 import model.Message;
 import system.Config;
 
@@ -14,7 +15,7 @@ public class SocketHandle implements Runnable {
     public void run() {
         try {
             socketOfClient = new Socket("26.118.21.242", Config.PORT);
-            System.out.println("Kết nối thành công");
+            System.out.println("Ket noi thanh cong");
 
             oos = new ObjectOutputStream(socketOfClient.getOutputStream());
             ois = new ObjectInputStream(socketOfClient.getInputStream());
@@ -28,12 +29,34 @@ public class SocketHandle implements Runnable {
                 
                 // Đăng nhập thành công
                 if (message.getType().equals("LOGIN_SUCCESS")) {
-                    System.out.println("Đăng nhập thành công");
-                    // Client.closeAllViews();
-                    // Client.openView(Client.View.HOMEPAGE);
-                     // nhận về
+                    System.out.println("Dang nhap thanh cong");
+                    Client.closeAllViews();
+                    Client.openView(Client.View.HOMEPAGE);
                     System.out.println(message.getObject());
                 }
+                // Đăng kí thành công
+                if (message.getType().equals("REGISTER_SUCCESS")){
+                    System.out.println("Dang ki thanh cong");
+                    Client.closeAllViews();
+                    Client.openView(Client.View.LOGIN);
+                    System.out.println(message.getObject());
+                }
+
+                // Sai thông tin tài khoản
+                if (message.getType().equals("WRONG_USER")){
+                    System.out.println("Sai thong tin dang nhap");
+                    Client.closeAllViews();
+                    Client.openView(Client.View.LOGIN);
+                    JOptionPane.showMessageDialog(null,"Tên đăng nhập hoặc mật khẩu không chính xác!", "Lỗi đăng nhập",JOptionPane.ERROR_MESSAGE);
+                }
+
+                //Xử lý trùng tên 
+                if (message.getType().equals("REGISTER_FAIL")){
+                    Client.closeAllViews();
+                    Client.openView(Client.View.REGISTER);
+                    JOptionPane.showMessageDialog(Client.registerFrm, "Tên tài khoản đã được người khác sử dụng");
+                }
+
             }
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Lỗi: " + e.getMessage());
