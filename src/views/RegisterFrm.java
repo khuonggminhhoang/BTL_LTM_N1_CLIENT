@@ -4,6 +4,13 @@
  */
 package views;
 
+import controllers.Client;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import model.Message;
+import model.Users;
+
 /**
  *
  * @author Admin
@@ -15,6 +22,17 @@ public class RegisterFrm extends javax.swing.JFrame {
      */
     public RegisterFrm() {
         initComponents();
+        this.setTitle("Game đuổi hình bắt chữ");
+        this.setIconImage(new ImageIcon("images/convit.jpg").getImage());
+        this.setResizable(false);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        avatarComboBox.setMaximumRowCount(5);
+        for (int i = 0; i <= 5; i++) {
+            avatarComboBox.addItem(new ImageIcon("images/gautruc/" + i + ".jpg"));
+        }
+        String avatar = (String) avatarComboBox.getSelectedItem();
+        System.out.println("Avatar đã chọn: " + avatar);
     }
 
     /**
@@ -35,6 +53,8 @@ public class RegisterFrm extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         confirmPasswordField = new javax.swing.JPasswordField();
         registerButton = new javax.swing.JButton();
+        avatarComboBox = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,12 +92,27 @@ public class RegisterFrm extends javax.swing.JFrame {
             }
         });
 
+        confirmPasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmPasswordFieldActionPerformed(evt);
+            }
+        });
+
         registerButton.setText("Đăng kí");
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerButtonActionPerformed(evt);
             }
         });
+
+        avatarComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        avatarComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avatarComboBoxActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Chọn avatar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,10 +138,16 @@ public class RegisterFrm extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(34, 34, 34)
-                        .addComponent(cofirmPasswordLabel)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cofirmPasswordLabel)
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
-                        .addComponent(confirmPasswordField)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(confirmPasswordField)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(avatarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,9 +165,16 @@ public class RegisterFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cofirmPasswordLabel))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(avatarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
                 .addComponent(registerButton)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -137,8 +185,43 @@ public class RegisterFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameFieldActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
-        // TODO add your handling code here:
+        String username = usernameField.getText();
+        if (username.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên tài khoản", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;  // Kết thúc phương thức nếu có lỗi
+        }
+
+        String password = String.copyValueOf(passwordField.getPassword());
+        if (password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập lại mật khẩu", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;  
+        }
+        
+        String avatar = (String) avatarComboBox.getSelectedItem();
+        if (avatar.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn avatar", "Lỗi", JOptionPane.ERROR_MESSAGE);
+            return;  
+            }
+
+
+        Users user = new Users(username, password,avatar);  // Tạo đối tượng người dùng
+        Message message = new Message("REGISTER_REQUEST", user);  // Tạo thông điệp đăng kí
+
+        Client.closeAllViews();  // Đóng các giao diện hiện tại
+        try {
+            Client.socketHandle.write(message);  // Gửi thông điệp đăng nhập
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi gửi thông điệp: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void avatarComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avatarComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_avatarComboBoxActionPerformed
+
+    private void confirmPasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmPasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmPasswordFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,9 +259,11 @@ public class RegisterFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> avatarComboBox;
     private javax.swing.JLabel cofirmPasswordLabel;
     private javax.swing.JPasswordField confirmPasswordField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
