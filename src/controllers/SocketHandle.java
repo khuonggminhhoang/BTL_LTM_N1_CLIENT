@@ -4,9 +4,11 @@ import java.io.*;
 import java.net.Socket;
 import javax.swing.JOptionPane;
 import model.Message;
+import model.Users;
 import system.Config;
 
 public class SocketHandle implements Runnable {
+    private Users currUser;
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
     private Socket socketOfClient;
@@ -14,7 +16,7 @@ public class SocketHandle implements Runnable {
     @Override
     public void run() {
         try {
-            socketOfClient = new Socket("26.118.21.242", Config.PORT);
+            socketOfClient = new Socket("localhost", Config.PORT);
             System.out.println("Ket noi thanh cong");
 
             oos = new ObjectOutputStream(socketOfClient.getOutputStream());
@@ -32,7 +34,7 @@ public class SocketHandle implements Runnable {
                     System.out.println("Dang nhap thanh cong");
                     Client.closeAllViews();
                     Client.openView(Client.View.HOMEPAGE);
-                    System.out.println(message.getObject());
+                    this.currUser = (Users)message.getObject();
                 }
                 // Đăng kí thành công
                 if (message.getType().equals("REGISTER_SUCCESS")){
@@ -43,7 +45,7 @@ public class SocketHandle implements Runnable {
                 }
 
                 // Sai thông tin tài khoản
-                if (message.getType().equals("WRONG_USER")){
+                if (message.getType().equals("LOGIN_FAIL")){
                     System.out.println("Sai thong tin dang nhap");
                     Client.closeAllViews();
                     Client.openView(Client.View.LOGIN);

@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.HashMap;
+
 import model.Message;
 import model.Users;
 import system.Config;
@@ -23,13 +25,15 @@ public class BTL_LTM_N1_Client {
      */
     public static void main(String[] args) {
         try {
-            Socket serverSocket = new Socket("26.118.21.242", Config.PORT); 
+            Socket serverSocket = new Socket("localhost", Config.PORT); 
 
             ObjectOutputStream oos = new ObjectOutputStream(serverSocket.getOutputStream());
             ObjectInputStream ois = new ObjectInputStream(serverSocket.getInputStream());
 
-            Users user = new Users("Thoabinh", "12345678");
-            Message sendMessage = new Message("CHANGE_PASSWORD_REQUEST", user);
+            Users user = new Users("hoangminhkhuong", "123456");
+            HashMap<Integer, Users> map = new HashMap<>();
+            map.put(102, user);
+            Message sendMessage = new Message("JOIN_ROOM_REQUEST", map);
             oos.writeObject(sendMessage);  // gửi đi
             System.out.println("Da gui goi tin: " + sendMessage);
             

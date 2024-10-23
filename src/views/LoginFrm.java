@@ -53,7 +53,6 @@ public class LoginFrm extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Đăng nhập");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -68,9 +67,9 @@ public class LoginFrm extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
+                .addContainerGap(34, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(24, 24, 24))
+                .addGap(15, 15, 15))
         );
 
         usernameLabel.setText("Tài khoản");
@@ -154,13 +153,13 @@ public class LoginFrm extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {  
     String username = usernameTextField.getText();
     if (username.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Vui lòng nhập tên tài khoản", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Vui lòng nhập tên tài khoản", "Loi nhap thieu username", JOptionPane.ERROR_MESSAGE);
         return;  // Kết thúc phương thức nếu có lỗi
     }
 
     String password = String.copyValueOf(passwordField.getPassword());
     if (password.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Vui lòng nhập lại mật khẩu", "Lỗi", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Vui lòng nhập lại mật khẩu", "Loi nhap thieu mat khau", JOptionPane.ERROR_MESSAGE);
         return;  // Kết thúc phương thức nếu có lỗi
     }
 
@@ -171,7 +170,7 @@ public class LoginFrm extends javax.swing.JFrame {
     try {
         Client.socketHandle.write(message);  // Gửi thông điệp đăng nhập
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Lỗi khi gửi thông điệp: " + e.getMessage(), "Lỗi", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Lỗi khi gửi thông điệp: " + e.getMessage(), "Loi gui thong diep", JOptionPane.ERROR_MESSAGE);
     }
 }
                                            

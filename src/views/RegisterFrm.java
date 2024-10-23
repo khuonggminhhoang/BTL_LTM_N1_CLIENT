@@ -228,8 +228,12 @@ public class RegisterFrm extends javax.swing.JFrame {
         Users user = new Users(username, password, avatar); // Tạo đối tượng người dùng
         Message message = new Message("REGISTER_REQUEST", user); // Tạo thông điệp đăng kí
 
-        Client.closeAllViews(); // Đóng các giao diện hiện tại
+        System.out.println(Client.socketHandle);
+        System.out.println(message.getType());
+        System.out.println(user.getAvatar());
+
         try {
+            Client.closeAllViews(); // Đóng các giao diện hiện tại
             Client.socketHandle.write(message); // Gửi thông điệp đăng nhập
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Lỗi khi gửi thông điệp: " + e.getMessage(), "Lỗi",

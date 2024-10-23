@@ -35,9 +35,11 @@ public class Client{
                 case REGISTER:
                     registerFrm=new RegisterFrm();
                     registerFrm.setVisible(true);
+                    break;
                 case HOMEPAGE:
                     homepageFrm=new HomepageFrm();
                     homepageFrm.setVisible(true);
+                    break;
             }
         }
     }
@@ -82,7 +84,6 @@ public class Client{
         socketHandle = new SocketHandle();
         new Thread(socketHandle).start(); // Chạy SocketHandle trong một thread riêng
     }
-    
     
     
     public enum View {
