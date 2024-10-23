@@ -43,7 +43,19 @@ public class Client{
             }
         }
     }
-   
+    public static void openView(View viewName,Users currUser){
+        if(viewName!=null){
+            switch(viewName){
+                case HOMEPAGE:
+                    homepageFrm=new HomepageFrm();
+                    homepageFrm.setUser(currUser);
+                    homepageFrm.setVisible(true);
+                    break;
+
+            }
+
+        }
+    }
     
     public static void closeView(View viewName){
         if(viewName!=null){

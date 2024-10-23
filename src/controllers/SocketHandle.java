@@ -6,13 +6,14 @@ import javax.swing.JOptionPane;
 import model.Message;
 import model.Users;
 import system.Config;
+import model.Users;
 
 public class SocketHandle implements Runnable {
     private Users currUser;
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
     private Socket socketOfClient;
-
+    private Users currUser;
     @Override
     public void run() {
         try {
@@ -31,6 +32,7 @@ public class SocketHandle implements Runnable {
                 
                 // Đăng nhập thành công
                 if (message.getType().equals("LOGIN_SUCCESS")) {
+                    this.currUser = (Users) message.getObject();
                     System.out.println("Dang nhap thanh cong");
                     Client.closeAllViews();
                     Client.openView(Client.View.HOMEPAGE);
