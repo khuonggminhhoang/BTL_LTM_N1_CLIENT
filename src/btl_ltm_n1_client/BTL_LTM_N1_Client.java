@@ -8,9 +8,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import model.Message;
+import model.Room;
 import model.Users;
 import system.Config;
 
@@ -30,9 +33,13 @@ public class BTL_LTM_N1_Client {
             ObjectOutputStream oos = new ObjectOutputStream(serverSocket.getOutputStream());
             ObjectInputStream ois = new ObjectInputStream(serverSocket.getInputStream());
 
+            // test join phòng
             Users user = new Users("hoangminhkhuong", "123456");
             HashMap<Integer, Users> map = new HashMap<>();
             map.put(102, user);
+            //
+
+            // test nhận danh sách phòng
             Message sendMessage = new Message("JOIN_ROOM_REQUEST", map);
             oos.writeObject(sendMessage);  // gửi đi
             System.out.println("Da gui goi tin: " + sendMessage);
@@ -40,14 +47,20 @@ public class BTL_LTM_N1_Client {
             // nhận về
             Message reciveMessage = (Message) ois.readObject();
             System.out.println(reciveMessage.getType());
-            System.out.println(reciveMessage.getObject());
+            Room room = (Room)reciveMessage.getObject();
+            System.out.println(room.getLstQuestion());
+            // List<Room> lst = new ArrayList<>();
+            // lst = (List<Room>)reciveMessage.getObject();
+            // for(Room x : lst){
+            //     System.out.println(x.getId() + "-" + x.getQty());
+            // }
+
+
             
 
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
