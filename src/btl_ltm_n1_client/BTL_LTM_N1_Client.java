@@ -13,9 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import model.Message;
-import model.Room;
 import model.Users;
 import system.Config;
+import java.util.Scanner;
 
 /**
  *
@@ -28,35 +28,54 @@ public class BTL_LTM_N1_Client {
      */
     public static void main(String[] args) {
         try {
-            Socket serverSocket = new Socket("localhost", Config.PORT); 
+            Socket serverSocket = new Socket("localhost", Config.PORT);
 
             ObjectOutputStream oos = new ObjectOutputStream(serverSocket.getOutputStream());
             ObjectInputStream ois = new ObjectInputStream(serverSocket.getInputStream());
 
-            // test join phòng
-            Users user = new Users("hoangminhkhuong", "123456");
-            HashMap<Integer, Users> map = new HashMap<>();
-            map.put(102, user);
-            //
+            // test đăng nhập
+            Users user = new Users("phamvananh", "123478");
+            Message loginMessage = new Message("LOGIN_REQUEST", user);
+            oos.writeObject(loginMessage);
 
-            // test nhận danh sách phòng
-            Message sendMessage = new Message("JOIN_ROOM_REQUEST", map);
-            oos.writeObject(sendMessage);  // gửi đi
-            System.out.println("Da gui goi tin: " + sendMessage);
-            
-            // nhận về
-            Message reciveMessage = (Message) ois.readObject();
-            System.out.println(reciveMessage.getType());
-            Room room = (Room)reciveMessage.getObject();
-            System.out.println(room.getLstQuestion());
-            // List<Room> lst = new ArrayList<>();
-            // lst = (List<Room>)reciveMessage.getObject();
-            // for(Room x : lst){
-            //     System.out.println(x.getId() + "-" + x.getQty());
+            loginMessage = (Message) ois.readObject();
+            System.out.println(loginMessage.getType());
+
+            // // type: GET_ROOMS_REQUEST | object: null
+            // // test room
+            // Message sendMessage = new Message("GET_ROOMS_REQUEST", null);
+            // oos.writeObject(sendMessage);
+
+            // Message receiveMessage = (Message) ois.readObject();
+            // HashMap<Integer, Integer> mapRoom =(HashMap<Integer, Integer>)
+            // receiveMessage.getObject();
+            // System.out.println(receiveMessage.getType());
+            // for(int key : mapRoom.keySet()) {
+            // int idRoom = key;
+            // int qty = mapRoom.get(key);
+            // System.out.println(idRoom + " => " + qty);
             // }
 
+            // type: JOIN_ROOM_REQUEST | object: idRoom
+            // test join room
+            Message sendMessage1 = new Message("JOIN_ROOM_REQUEST", "108");
+            oos.writeObject(sendMessage1);
 
-            
+            Message receiveMessage1 = (Message) ois.readObject();
+            System.out.println(receiveMessage1.getType());
+
+            Scanner scn = new Scanner(System.in);
+            while (true) {
+                String mess = scn.nextLine();
+                // dùng như này để gửi đáp án về giao diện người chơi đối thủ 
+                Message message = new Message("ANSWER_TEMP_REQUEST", mess);
+                oos.writeObject(message);
+
+                Message received = (Message) ois.readObject();
+                System.out.println(received.getType());
+
+                System.out.println(received.getObject());
+            }
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,6 +83,6 @@ public class BTL_LTM_N1_Client {
             e.printStackTrace();
         }
 
-   }
-    
+    }
+
 }

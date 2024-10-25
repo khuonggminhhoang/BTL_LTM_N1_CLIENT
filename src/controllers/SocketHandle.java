@@ -13,7 +13,7 @@ public class SocketHandle implements Runnable {
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
     private Socket socketOfClient;
-    private Users currUser;
+    
     @Override
     public void run() {
         try {
@@ -56,7 +56,7 @@ public class SocketHandle implements Runnable {
 
                 //Xử lý trùng tên 
                 if (message.getType().equals("REGISTER_FAIL")){
-                    Client.closeAllViews();
+                    // Client.closeAllViews();
                     Client.openView(Client.View.REGISTER);
                     JOptionPane.showMessageDialog(Client.registerFrm, "Tên tài khoản đã được người khác sử dụng");
                 }

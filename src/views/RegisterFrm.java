@@ -233,7 +233,7 @@ public class RegisterFrm extends javax.swing.JFrame {
         System.out.println(user.getAvatar());
 
         try {
-            Client.closeAllViews(); // Đóng các giao diện hiện tại
+            // Client.closeAllViews(); // Đóng các giao diện hiện tại
             Client.socketHandle.write(message); // Gửi thông điệp đăng nhập
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Lỗi khi gửi thông điệp: " + e.getMessage(), "Lỗi",
