@@ -4,6 +4,8 @@
  */
 package views;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author HẢI ĐĂNG
@@ -15,6 +17,11 @@ public class RoomListFrm extends javax.swing.JFrame {
      */
     public RoomListFrm() {
         initComponents();
+         this.setTitle("Game đuổi hình bắt chữ");
+        this.setIconImage(new ImageIcon("src/images/convit.jpg").getImage());
+        this.setResizable(false);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     /**

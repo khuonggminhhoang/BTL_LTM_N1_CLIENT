@@ -20,6 +20,10 @@ public class Client{
     public static RegisterFrm registerFrm;
     public static HomepageFrm homepageFrm;
     public static SocketHandle socketHandle;
+    public static WaitingRoomFrm waitingRoomFrm;
+    public static GameFrm gameFrm;
+    public static PlayerFrm playerFrm;
+    public static RoomListFrm roomListFrm;
     
     public Client(){
         
@@ -36,9 +40,22 @@ public class Client{
                     registerFrm=new RegisterFrm();
                     registerFrm.setVisible(true);
                     break;
-                case HOMEPAGE:
-                    homepageFrm=new HomepageFrm();
-                    homepageFrm.setVisible(true);
+            
+                case ROOM_LIST:
+                    roomListFrm=new RoomListFrm();
+                    roomListFrm.setVisible(true);
+                    break;
+                case WAITING_ROOM:
+                    waitingRoomFrm=new WaitingRoomFrm();
+                    waitingRoomFrm.setVisible(true);
+                    break;
+                case GAME_FRM:
+                    gameFrm=new GameFrm();
+                    gameFrm.setVisible(true);
+                    break;
+                case PLAYER:
+                    playerFrm=new PlayerFrm();
+                    playerFrm.setVisible(true);
                     break;
             }
         }
@@ -47,10 +64,11 @@ public class Client{
         if(viewName!=null){
             switch(viewName){
                 case HOMEPAGE:
-                    homepageFrm=new HomepageFrm();
-                    homepageFrm.setUser(currUser);
+                    homepageFrm=new HomepageFrm(currUser);
+                    // homepageFrm.setUser(currUser);
                     homepageFrm.setVisible(true);
                     break;
+                
 
             }
 
@@ -78,6 +96,10 @@ public class Client{
         if(loginFrm!=null) loginFrm.dispose();
         if(registerFrm!=null) registerFrm.dispose();
         if(homepageFrm!=null) homepageFrm.dispose();
+        if(roomListFrm!=null) roomListFrm.dispose();
+        if(waitingRoomFrm!=null) waitingRoomFrm.dispose();
+        if(gameFrm!=null) gameFrm.dispose();
+        if(playerFrm!=null) playerFrm.dispose();
     }
     
     
@@ -92,7 +114,14 @@ public class Client{
         // registerFrm.setVisible(true);
         // homepageFrm=new HomepageFrm();
         // homepageFrm.setVisible(true);
-        
+        // roomListFrm=new RoomListFrm();
+        // roomListFrm.setVisible(true);
+        // waitingRoomFrm=new WaitingRoomFrm();
+        // waitingRoomFrm.setVisible(true);
+        // gameFrm=new GameFrm();
+        // gameFrm.setVisible(true);
+        // playerFrm=new PlayerFrm();
+        // playerFrm.setVisible(true);
         socketHandle = new SocketHandle();
         new Thread(socketHandle).start(); // Chạy SocketHandle trong một thread riêng
     }
@@ -103,17 +132,10 @@ public class Client{
         REGISTER,
         HOMEPAGE,
         ROOM_LIST,
-        FRIEND_LIST,
-        FIND_ROOM,
         WAITING_ROOM,
-        GAME_CLIENT,
-        CREATE_ROOM_PASSWORD,
-        JOIN_ROOM_PASSWORD,
-        COMPETITOR_INFO,
+        GAME_FRM,
+        PLAYER,
         RANK,
-        GAME_NOTICE,
         FRIEND_REQUEST,
-        GAME_AI,
-        ROOM_NAME_FRM
     }
 }

@@ -29,6 +29,9 @@ public class LoginFrm extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
     }
+    public void showError(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,7 +169,7 @@ public class LoginFrm extends javax.swing.JFrame {
     Users user = new Users(username, password);  // Tạo đối tượng người dùng
     Message message = new Message("LOGIN_REQUEST", user);  // Tạo thông điệp đăng nhập
 
-    Client.closeAllViews();  // Đóng các giao diện hiện tại
+    // Client.closeAllViews();  // Đóng các giao diện hiện tại
     try {
         Client.socketHandle.write(message);  // Gửi thông điệp đăng nhập
     } catch (Exception e) {

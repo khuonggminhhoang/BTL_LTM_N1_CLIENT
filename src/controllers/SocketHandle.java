@@ -6,18 +6,20 @@ import javax.swing.JOptionPane;
 import model.Message;
 import model.Users;
 import system.Config;
-import model.Users;
 
 public class SocketHandle implements Runnable {
     private Users currUser;
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
     private Socket socketOfClient;
+<<<<<<< HEAD
     
+=======
+>>>>>>> 0742d6631f639888f4881b4d8ae7947ca8e1fb66
     @Override
     public void run() {
         try {
-            socketOfClient = new Socket("localhost", Config.PORT);
+            socketOfClient = new Socket("26.118.21.242", Config.PORT);
             System.out.println("Ket noi thanh cong");
 
             oos = new ObjectOutputStream(socketOfClient.getOutputStream());
@@ -33,10 +35,11 @@ public class SocketHandle implements Runnable {
                 // Đăng nhập thành công
                 if (message.getType().equals("LOGIN_SUCCESS")) {
                     this.currUser = (Users) message.getObject();
+                    System.out.println(this.currUser.getAvatar());
+                    System.out.println(this.currUser.getNumberOfGame());
                     System.out.println("Dang nhap thanh cong");
                     Client.closeAllViews();
-                    Client.openView(Client.View.HOMEPAGE);
-                    this.currUser = (Users)message.getObject();
+                    Client.openView(Client.View.HOMEPAGE,currUser);
                 }
                 // Đăng kí thành công
                 if (message.getType().equals("REGISTER_SUCCESS")){
@@ -49,9 +52,9 @@ public class SocketHandle implements Runnable {
                 // Sai thông tin tài khoản
                 if (message.getType().equals("LOGIN_FAIL")){
                     System.out.println("Sai thong tin dang nhap");
-                    Client.closeAllViews();
-                    Client.openView(Client.View.LOGIN);
-                    JOptionPane.showMessageDialog(null,"Tên đăng nhập hoặc mật khẩu không chính xác!", "Lỗi đăng nhập",JOptionPane.ERROR_MESSAGE);
+                    // Client.closeAllViews();
+                    // Client.openView(Client.View.LOGIN);
+                    Client.loginFrm.showError("Tài khoản hoặc mật khẩu không chính xác");
                 }
 
                 //Xử lý trùng tên 

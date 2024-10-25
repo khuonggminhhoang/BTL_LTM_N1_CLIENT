@@ -16,7 +16,8 @@ public class HomepageFrm extends javax.swing.JFrame {
     /**
      * Creates new form HomepageFrm
      */
-    public HomepageFrm() {
+    public HomepageFrm(Users user) {
+        this.currUser=user;
         initComponents();
         this.setTitle("Game đuổi hình bắt chữ");
         this.setIconImage(new ImageIcon("src/images/convit.jpg").getImage());
@@ -24,8 +25,12 @@ public class HomepageFrm extends javax.swing.JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
+    
     public void setUser(Users user){
         this.currUser=user;
+    }
+    public Users getUser(){
+        return currUser;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,19 +85,22 @@ public class HomepageFrm extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Tên người chơi:");
+        jLabel7.setText(this.getUser().getUsername());
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Số ván chơi:");
+        jLabel9.setText(currUser.getNumberOfGame()+"");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Số ván thắng:");
+        jLabel10.setText(currUser.getNumberOfWin()+"");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Tỉ lệ thắng:");
+        double ratewin=currUser.getNumberOfWin()*1.0/currUser.getNumberOfGame();
+        System.out.println(ratewin);
+        String ratewinStr=String.format("%.2f", ratewin);
+        jLabel11.setText(ratewinStr);
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -110,9 +118,11 @@ public class HomepageFrm extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Thứ hạng:");
 
-        avatar.setBackground(new java.awt.Color(102, 102, 102));
-        avatar.setForeground(new java.awt.Color(255, 255, 255));
-        avatar.setText("Avatar");
+        // avatar.setBackground(new java.awt.Color(102, 102, 102));
+        // avatar.setForeground(new java.awt.Color(255, 255, 255));
+        avatar.setIcon(new ImageIcon(currUser.getAvatar()));
+        // avatar.setPreferredSize(new Dimension(200, 200));
+        
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -341,11 +351,11 @@ public class HomepageFrm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HomepageFrm().setVisible(true);
-            }
-        });
+        // java.awt.EventQueue.invokeLater(new Runnable() {
+        //     public void run() {
+        //         new HomepageFrm().setVisible(true);
+        //     }
+        // });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
