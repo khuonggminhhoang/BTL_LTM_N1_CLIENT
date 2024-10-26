@@ -8,10 +8,11 @@ import model.Users;
 import system.Config;
 
 public class SocketHandle implements Runnable {
-    // private Users User;
+    // private Users currUser;
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
     private Socket socketOfClient;
+    
     @Override
     public void run() {
         try {
@@ -46,16 +47,19 @@ public class SocketHandle implements Runnable {
                 // Sai thông tin tài khoản
                 if (message.getType().equals("LOGIN_FAIL")){
                     System.out.println("Sai thong tin dang nhap");
-                    // Client.closeAllViews();
-                    // Client.openView(Client.View.LOGIN);
                     Client.loginFrm.showError("Tài khoản hoặc mật khẩu không chính xác");
                 }
 
                 //Xử lý trùng tên 
                 if (message.getType().equals("REGISTER_FAIL")){
-                    // Client.closeAllViews();
-                    Client.openView(Client.View.REGISTER);
                     JOptionPane.showMessageDialog(Client.registerFrm, "Tên tài khoản đã được người khác sử dụng");
+                }
+
+                // chat world
+                if (message.getType().equals("WORLD_CHAT_RESPONSE")) {
+                    String mess = message.getObject() + "";
+                    System.out.println(mess);
+                    Client.homepageFrm.addMessage(mess);
                 }
 
             }
