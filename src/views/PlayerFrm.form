@@ -56,14 +56,14 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane2" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="jButton1" min="-2" pref="90" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="563" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -73,8 +73,8 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="77" max="-2" attributes="0"/>
-                  <EmptySpace pref="225" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" pref="284" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -86,6 +86,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Quay l&#x1ea1;i"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
 
@@ -101,7 +104,7 @@
                 <Component class="javax.swing.JTable" name="jTable1">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="3" rowCount="4">
+                      <Table columnCount="4" rowCount="4">
                         <Column editable="true" title="ID" type="java.lang.String">
                           <Data value="001"/>
                           <Data value="002"/>
@@ -114,11 +117,17 @@
                           <Data value="Ho&#xe0;ng Minh Kh&#x1b0;&#x1a1;ng"/>
                           <Data value="L&#xea; Tr&#x1ecd;ng &#x110;&#x1ea1;t"/>
                         </Column>
+                        <Column editable="true" title="Ho&#x1ea1;t &#x111;&#x1ed9;ng" type="java.lang.String">
+                          <Data value="Online"/>
+                          <Data value="Online"/>
+                          <Data value="Offline"/>
+                          <Data value="Offline"/>
+                        </Column>
                         <Column editable="true" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.String">
-                          <Data value="Online"/>
-                          <Data value="Online"/>
-                          <Data value="Offline"/>
-                          <Data value="Offline"/>
+                          <Data value="&#x110;ang ch&#x1a1;i"/>
+                          <Data value="&#x110;ang ch&#x1a1;i"/>
+                          <Data value="&#x110;ang ch&#x1edd;"/>
+                          <Data value="&#x110;ang ch&#x1edd;"/>
                         </Column>
                       </Table>
                     </Property>
@@ -167,19 +176,19 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="376" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="245" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

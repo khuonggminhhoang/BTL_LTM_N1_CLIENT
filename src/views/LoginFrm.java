@@ -154,28 +154,28 @@ public class LoginFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTextFieldActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {  
-    String username = usernameTextField.getText();
-    if (username.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Vui lòng nhập tên tài khoản", "Loi nhap thieu username", JOptionPane.ERROR_MESSAGE);
-        return;  // Kết thúc phương thức nếu có lỗi
-    }
+        String username = usernameTextField.getText();
+        if (username.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập tên tài khoản", "Loi nhap thieu username", JOptionPane.ERROR_MESSAGE);
+            return;  // Kết thúc phương thức nếu có lỗi
+        }
 
-    String password = String.copyValueOf(passwordField.getPassword());
-    if (password.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Vui lòng nhập lại mật khẩu", "Loi nhap thieu mat khau", JOptionPane.ERROR_MESSAGE);
-        return;  // Kết thúc phương thức nếu có lỗi
-    }
+        String password = String.copyValueOf(passwordField.getPassword());
+        if (password.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập lại mật khẩu", "Loi nhap thieu mat khau", JOptionPane.ERROR_MESSAGE);
+            return;  // Kết thúc phương thức nếu có lỗi
+        }
 
-    Users user = new Users(username, password);  // Tạo đối tượng người dùng
-    Message message = new Message("LOGIN_REQUEST", user);  // Tạo thông điệp đăng nhập
+        Users user = new Users(username, password);  // Tạo đối tượng người dùng
+        Message message = new Message("LOGIN_REQUEST", user);  // Tạo thông điệp đăng nhập
 
-    // Client.closeAllViews();  // Đóng các giao diện hiện tại
-    try {
-        Client.socketHandle.write(message);  // Gửi thông điệp đăng nhập
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Lỗi khi gửi thông điệp: " + e.getMessage(), "Loi gui thong diep", JOptionPane.ERROR_MESSAGE);
+        // Client.closeAllViews();  // Đóng các giao diện hiện tại
+        try {
+            Client.socketHandle.write(message);  // Gửi thông điệp đăng nhập
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi gửi thông điệp: " + e.getMessage(), "Loi gui thong diep", JOptionPane.ERROR_MESSAGE);
+        }
     }
-}
                                            
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
