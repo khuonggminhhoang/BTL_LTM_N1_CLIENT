@@ -7,6 +7,8 @@ import model.Message;
 import model.Users;
 import system.Config;
 
+import java.util.HashMap;
+
 public class SocketHandle implements Runnable {
     // private Users currUser;
     private ObjectOutputStream oos;
@@ -60,6 +62,14 @@ public class SocketHandle implements Runnable {
                     String mess = message.getObject() + "";
                     System.out.println(mess);
                     Client.homepageFrm.addMessage(mess);
+                }
+
+                // get rooms
+                if (message.getType().equals("GET_ROOMS_SUCCESS")) {
+                    HashMap<Integer, Integer> map = (HashMap<Integer, Integer>) message.getObject();
+                    Client.closeAllViews();
+                    Client.roomListFrm.setUserQuantity(map);
+                    Client.openView(Client.View.ROOM_LIST);
                 }
 
             }

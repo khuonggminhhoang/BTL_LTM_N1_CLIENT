@@ -322,6 +322,7 @@ public class HomepageFrm extends javax.swing.JFrame {
 
     private void btnSelectRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectRoomActionPerformed
         Client.closeAllViews();
+        
         Client.openView(Client.View.ROOM_LIST);
     }//GEN-LAST:event_btnSelectRoomActionPerformed
 
@@ -331,7 +332,7 @@ public class HomepageFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGetRankActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        // Client.closeAllViews();
+        Client.closeAllViews();
         Client.openView(Client.View.LOGIN);
     }//GEN-LAST:event_btnLogoutActionPerformed
 

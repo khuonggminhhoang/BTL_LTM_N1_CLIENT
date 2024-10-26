@@ -245,7 +245,7 @@ public class RegisterFrm extends javax.swing.JFrame {
             return;
         }
 
-        String confirmPassword = "" + confirmPasswordField.getPassword();
+        String confirmPassword = String.copyValueOf(confirmPasswordField.getPassword());
         if(confirmPassword.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập xác nhận mật khẩu", "Lỗi", JOptionPane.ERROR_MESSAGE);
             return;
