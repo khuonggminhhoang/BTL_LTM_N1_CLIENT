@@ -25,9 +25,7 @@ public class Client{
     public static PlayerFrm playerFrm;
     public static RoomListFrm roomListFrm;
     
-    public Client(){
-        
-    }
+    public Client(){}
     
     public static void openView(View viewName){
         if(viewName!=null){
@@ -39,6 +37,11 @@ public class Client{
                 case REGISTER:
                     registerFrm=new RegisterFrm();
                     registerFrm.setVisible(true);
+                    break;
+
+                case HOMEPAGE: 
+                    homepageFrm = new HomepageFrm();
+                    homepageFrm.setVisible(true);
                     break;
             
                 case ROOM_LIST:
@@ -58,20 +61,6 @@ public class Client{
                     playerFrm.setVisible(true);
                     break;
             }
-        }
-    }
-    public static void openView(View viewName,Users currUser){
-        if(viewName!=null){
-            switch(viewName){
-                case HOMEPAGE:
-                    homepageFrm=new HomepageFrm(currUser);
-                    // homepageFrm.setUser(currUser);
-                    homepageFrm.setVisible(true);
-                    break;
-                
-
-            }
-
         }
     }
     

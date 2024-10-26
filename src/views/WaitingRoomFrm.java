@@ -17,7 +17,7 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
      */
     public WaitingRoomFrm() {
         initComponents();
-         this.setTitle("Game đuổi hình bắt chữ");
+        this.setTitle("Game đuổi hình bắt chữ");
         this.setIconImage(new ImageIcon("src/images/convit.jpg").getImage());
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

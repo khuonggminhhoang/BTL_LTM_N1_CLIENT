@@ -8,7 +8,7 @@ import model.Users;
 import system.Config;
 
 public class SocketHandle implements Runnable {
-    private Users currUser;
+    // private Users User;
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
     private Socket socketOfClient;
@@ -30,12 +30,10 @@ public class SocketHandle implements Runnable {
                 
                 // Đăng nhập thành công
                 if (message.getType().equals("LOGIN_SUCCESS")) {
-                    this.currUser = (Users) message.getObject();
-                    System.out.println(this.currUser.getAvatar());
-                    System.out.println(this.currUser.getNumberOfGame());
+                    Client.user = (Users) message.getObject();
                     System.out.println("Dang nhap thanh cong");
                     Client.closeAllViews();
-                    Client.openView(Client.View.HOMEPAGE,currUser);
+                    Client.openView(Client.View.HOMEPAGE);
                 }
                 // Đăng kí thành công
                 if (message.getType().equals("REGISTER_SUCCESS")){

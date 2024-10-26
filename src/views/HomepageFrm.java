@@ -4,6 +4,7 @@
  */
 package views;
 
+import controllers.Client;
 import javax.swing.ImageIcon;
 import model.Users;
 
@@ -16,8 +17,8 @@ public class HomepageFrm extends javax.swing.JFrame {
     /**
      * Creates new form HomepageFrm
      */
-    public HomepageFrm(Users user) {
-        this.currUser=user;
+    public HomepageFrm() {
+        // this.currUser=user;
         initComponents();
         this.setTitle("Game đuổi hình bắt chữ");
         this.setIconImage(new ImageIcon("src/images/convit.jpg").getImage());
@@ -26,12 +27,12 @@ public class HomepageFrm extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
     
-    public void setUser(Users user){
-        this.currUser=user;
-    }
-    public Users getUser(){
-        return currUser;
-    }
+    // public void setUser(Users user){
+    //     this.currUser=user;
+    // }
+    // public Users getUser(){
+    //     return currUser;
+    // }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,30 +85,23 @@ public class HomepageFrm extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText(this.getUser().getUsername());
+        jLabel7.setText(Client.user.getUsername());
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText(currUser.getNumberOfGame()+"");
+        jLabel9.setText(Client.user.getNumberOfGame()+"");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText(currUser.getNumberOfWin()+"");
+        jLabel10.setText(Client.user.getNumberOfWin()+"");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        double ratewin=currUser.getNumberOfWin()*1.0/currUser.getNumberOfGame();
+        double ratewin=Client.user.getNumberOfWin()*1.0/Client.user.getNumberOfGame();
         System.out.println(ratewin);
         String ratewinStr=String.format("%.2f", ratewin);
         jLabel11.setText(ratewinStr);
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Tổng điểm:");
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Tổng điểm:");
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,7 +113,7 @@ public class HomepageFrm extends javax.swing.JFrame {
 
         // avatar.setBackground(new java.awt.Color(102, 102, 102));
         // avatar.setForeground(new java.awt.Color(255, 255, 255));
-        avatar.setIcon(new ImageIcon(currUser.getAvatar()));
+        avatar.setIcon(new ImageIcon(Client.user.getAvatar()));
         // avatar.setPreferredSize(new Dimension(200, 200));
         
 
@@ -284,19 +278,23 @@ public class HomepageFrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Client.closeAllViews();
+        Client.openView(Client.View.PLAYER);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        Client.closeAllViews();
+        Client.openView(Client.View.ROOM_LIST);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        // Client.closeAllViews();
+        Client.openView(Client.View.RANK);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        // Client.closeAllViews();
+        Client.openView(Client.View.LOGIN);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
