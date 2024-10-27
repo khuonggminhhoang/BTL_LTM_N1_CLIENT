@@ -402,7 +402,7 @@ public class RoomListFrm extends javax.swing.JFrame {
         // TODO add your handling code here:
         // Tạo một message để yêu cầu tham gia phòng với ID 101
         Client.closeAllViews();
-        Client.openView(Client.View.GAME_FRM);
+        Client.openView(Client.View.WAITING_ROOM);
         int roomId = 101;
         Message joinRoomMessage = new Message("JOIN_ROOM_REQUEST", roomId);
 

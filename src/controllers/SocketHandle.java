@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.Message;
@@ -18,7 +19,7 @@ public class SocketHandle implements Runnable {
     @Override
     public void run() {
         try {
-            socketOfClient = new Socket("26.118.21.242", Config.PORT);
+            socketOfClient = new Socket("localhost", Config.PORT);
             System.out.println("Ket noi thanh cong");
 
             oos = new ObjectOutputStream(socketOfClient.getOutputStream());
@@ -81,7 +82,24 @@ public class SocketHandle implements Runnable {
                     Client.openView(Client.View.RANK);
                 }
 
+                if (message.getType().equals("GET_ROOMS_SUCCESS")) {
+                    HashMap<Integer, Integer> map = (HashMap<Integer, Integer>) message.getObject();
+                    Client.roomListFrm.setUserQuantity(map);
+                    
+                }
+
+                if (message.getType().equals("START_GAME")) {
+                    Questions firstQuestion = (Questions) message.getObject();
+
+                }
                 
+                if (message.getType().equals("JOIN_ROOM_SUCCESS")) {
+                    System.out.println("Join room success");
+                }
+                
+                if (message.getType().equals("GET_ROOM_REQUEST")) {
+                    Client.waitingRoomFrm.setAmountPlayer((int) message.getObject());
+                }
 
             }
         } catch (IOException | ClassNotFoundException e) {
