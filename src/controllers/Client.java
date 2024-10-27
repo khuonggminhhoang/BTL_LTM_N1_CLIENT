@@ -5,6 +5,7 @@
 package controllers;
 
 
+import java.util.List;
 import model.Users;
 import views.*;
 
@@ -16,6 +17,7 @@ import views.*;
 
 public class Client{
     public static Users user;
+    public static List<Users> lst;
     public static LoginFrm loginFrm;
     public static RegisterFrm registerFrm;
     public static HomepageFrm homepageFrm;

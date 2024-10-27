@@ -7,6 +7,7 @@ package views;
 import java.io.IOException;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 import controllers.Client;
 import controllers.SocketHandle;
@@ -316,8 +317,14 @@ public class HomepageFrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGetListPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetListPlayerActionPerformed
+        Message message=new Message("GET_ALL_USER_REQUEST",null);
+        try {
+            Client.socketHandle.write(message);  
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi gửi thông điệp: " + e.getMessage(), "Loi gui thong diep", JOptionPane.ERROR_MESSAGE);
+        }
         Client.closeAllViews();
-        Client.openView(Client.View.PLAYER);
+        // Client.openView(Client.View.PLAYER);
     }//GEN-LAST:event_btnGetListPlayerActionPerformed
 
     private void btnSelectRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectRoomActionPerformed
@@ -326,8 +333,14 @@ public class HomepageFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelectRoomActionPerformed
 
     private void btnGetRankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGetRankActionPerformed
+        Message message=new Message("VIEW_RANK_REQUEST",null);
+        try {
+            Client.socketHandle.write(message);  
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lỗi khi gửi thông điệp: " + e.getMessage(), "Loi gui thong diep", JOptionPane.ERROR_MESSAGE);
+        }
         Client.closeAllViews();
-        Client.openView(Client.View.RANK);
+        // Client.openView(Client.View.RANK);
     }//GEN-LAST:event_btnGetRankActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed

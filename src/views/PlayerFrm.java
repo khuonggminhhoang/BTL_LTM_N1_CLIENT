@@ -6,7 +6,16 @@ package views;
 
 import controllers.Client;
 import java.awt.datatransfer.ClipboardOwner;
+import java.util.List;
+import java.lang.*;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import java.io.IOException;
+import model.Message;
+import model.Users;
+
+
+
 
 /**
  *
@@ -25,6 +34,22 @@ public class PlayerFrm extends javax.swing.JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
+
+    Thread thread = new Thread() {
+        @Override
+        public void run() {
+            while (Client.lst.isDisplayable() && isPlayThread ) {
+                try {
+                    Message message = new Message("GET_ROOMS_REQUEST", null);
+                    Client.socketHandle.write(message);
+                    Thread.sleep(500);
+                } catch (InterruptedException | IOException ex) {
+                    JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                }
+            }
+        }
+    };
+    thread.start();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,17 +78,22 @@ public class PlayerFrm extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        List<Users> lst=Client.lst;
+        Object[][]data=new Object[lst.size()][4];
+        for(int i=0;i<data.length;i++){
+            Users user=lst.get(i);
+            data[i][0]=user.getId();
+            data[i][1]=user.getUsername();
+            data[i][2]=user.isOnline();
+            data[i][3]=user.isPlaying();
+        }
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"001", "Nguyễn Hải Đăng", "Online", "Đang chơi"},
-                {"002", "Phạm Văn Anh", "Online", "Đang chơi"},
-                {"003", "Hoàng Minh Khương", "Offline", "Đang chờ"},
-                {"004", "Lê Trọng Đạt", "Offline", "Đang chờ"}
-            },
-            new String [] {
+            data,
+            new String[] {
                 "ID", "Tên người chơi", "Hoạt động", "Trạng thái"
             }
+
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class

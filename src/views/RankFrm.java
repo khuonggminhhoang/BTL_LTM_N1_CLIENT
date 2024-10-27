@@ -3,9 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package views;
+
+
 import controllers.Client;
 import java.awt.datatransfer.ClipboardOwner;
 import javax.swing.ImageIcon;
+import java.util.List;
+import model.Users;
 
 /**
  *
@@ -47,14 +51,18 @@ public class RankFrm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+    
+
+        List<Users> lst=Client.lst;
+        Object [][]data=new Object[lst.size()][3];
+        for(int i=0;i<data.length;i++){
+            Users user=lst.get(i);
+            data[i][0]=user.getId(),
+            data[i][1]=user.getUsername();
+            data[i][2]=user.get        }
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"001", "Nguyễn Hải Đăng",  new Integer(1)},
-                {"002", "Phạm Văn Anh",  new Integer(2)},
-                {"003", "Hoàng Minh Khương",  new Integer(3)},
-                {"004", "Lê Trọng Đạt",  new Integer(4)}
-            },
+            data,
             new String [] {
                 "ID", "Tên người chơi", "Thứ hạng"
             }

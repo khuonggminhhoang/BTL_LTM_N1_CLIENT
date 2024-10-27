@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.Message;
 import model.Users;
@@ -60,6 +61,23 @@ public class SocketHandle implements Runnable {
                     String mess = message.getObject() + "";
                     System.out.println(mess);
                     Client.homepageFrm.addMessage(mess);
+                }
+
+                // Lấy về danh sách người chơi get all user request
+                if(message.getType().equals("GET_ALL_USER_SUCCESS")){
+                    System.out.println(message.getType());
+                    System.out.println(message.getObject());
+                    Client.lst=(List<Users>)message.getObject();
+                    Client.openView(Client.View.PLAYER);
+                }
+
+
+                // lấy về bảng xếp hạng view rank request
+                if( message.getType().equals("VIEW_RANK_SUCCESS")){
+                    System.out.println(message.getType());
+                    System.out.println(message.getObject());
+                    Client.lst=(List<Users>) message.getObject();
+                    // Client.openView(Client.View.RANK);
                 }
 
             }
