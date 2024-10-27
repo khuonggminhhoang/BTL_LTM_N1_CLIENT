@@ -24,7 +24,7 @@ public class BTL_LTM_N1_Client {
      */
     public static void main(String[] args) {
         try {
-            Socket serverSocket = new Socket("localhost", Config.PORT);
+            Socket serverSocket = new Socket("26.198.43.249", Config.PORT);
 
             ObjectOutputStream oos = new ObjectOutputStream(serverSocket.getOutputStream());
             ObjectInputStream ois = new ObjectInputStream(serverSocket.getInputStream());

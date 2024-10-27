@@ -35,21 +35,21 @@ public class PlayerFrm extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    Thread thread = new Thread() {
-        @Override
-        public void run() {
-            while (Client.lst.isDisplayable() && isPlayThread ) {
-                try {
-                    Message message = new Message("GET_ROOMS_REQUEST", null);
-                    Client.socketHandle.write(message);
-                    Thread.sleep(500);
-                } catch (InterruptedException | IOException ex) {
-                    JOptionPane.showMessageDialog(rootPane, ex.getMessage());
-                }
-            }
-        }
-    };
-    thread.start();
+    // Thread thread = new Thread() {
+    //     @Override
+    //     public void run() {
+    //         while (Client.lst.isDisplayable() && isPlayThread ) {
+    //             try {
+    //                 Message message = new Message("GET_ROOMS_REQUEST", null);
+    //                 Client.socketHandle.write(message);
+    //                 Thread.sleep(500);
+    //             } catch (InterruptedException | IOException ex) {
+    //                 JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+    //             }
+    //         }
+    //     }
+    // };
+    // thread.start();
 
     /**
      * This method is called from within the constructor to initialize the form.

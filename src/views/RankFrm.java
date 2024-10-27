@@ -57,9 +57,10 @@ public class RankFrm extends javax.swing.JFrame {
         Object [][]data=new Object[lst.size()][3];
         for(int i=0;i<data.length;i++){
             Users user=lst.get(i);
-            data[i][0]=user.getId(),
+            data[i][0]=user.getId();
             data[i][1]=user.getUsername();
-            data[i][2]=user.get        }
+            data[i][2]=user.getNumberOfWin();     
+        }
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             data,

@@ -17,7 +17,7 @@ public class SocketHandle implements Runnable {
     @Override
     public void run() {
         try {
-            socketOfClient = new Socket("26.118.21.242", Config.PORT);
+            socketOfClient = new Socket("26.198.43.249", Config.PORT);
             System.out.println("Ket noi thanh cong");
 
             oos = new ObjectOutputStream(socketOfClient.getOutputStream());
@@ -80,9 +80,11 @@ public class SocketHandle implements Runnable {
                     // Client.openView(Client.View.RANK);
                 }
 
+                
+
             }
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Lỗi: " + e.getMessage());
+            System.err.println("Loi: " + e.getMessage());
         } finally {
             // Đóng tài nguyên
             try {
