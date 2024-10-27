@@ -9,6 +9,13 @@ import controllers.Client;
 import java.awt.datatransfer.ClipboardOwner;
 import javax.swing.ImageIcon;
 import java.util.List;
+import javax.swing.JOptionPane;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+
+import model.Message;
 import model.Users;
 
 /**
@@ -16,6 +23,7 @@ import model.Users;
  * @author HẢI ĐĂNG
  */
 public class RankFrm extends javax.swing.JFrame {
+    private boolean isPlayThread = true;
 
     /**
      * Creates new form RankFrm
@@ -27,6 +35,21 @@ public class RankFrm extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                while (Client.rankFrm.isDisplayable() && isPlayThread ) {
+                    try {
+                        Message message = new Message("GET_ROOMS_REQUEST", null);
+                        Client.socketHandle.write(message);
+                        Thread.sleep(500);
+                    } catch (InterruptedException | IOException ex) {
+                        JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                    }
+                }
+            }
+        };
+        thread.start();
     }
 
     /**
@@ -54,12 +77,21 @@ public class RankFrm extends javax.swing.JFrame {
     
 
         List<Users> lst=Client.lst;
+
+        // tạo ra 1 cái colection để sắp xếp người chơi theo tỷ lệ thắng giảm dần
+        Collections.sort(lst,(user1,user2) ->{
+            double rateWin1=(double) user1.getNumberOfWin()/user1.getNumberOfGame();
+            double rateWin2=(double) user2.getNumberOfWin()/user2.getNumberOfGame();     
+            return Double.compare(rateWin2, rateWin1);        
+        });
+
+        
         Object [][]data=new Object[lst.size()][3];
         for(int i=0;i<data.length;i++){
             Users user=lst.get(i);
             data[i][0]=user.getId();
             data[i][1]=user.getUsername();
-            data[i][2]=user.getNumberOfWin();     
+            data[i][2]=i+1;
         }
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

@@ -26,6 +26,8 @@ public class PlayerFrm extends javax.swing.JFrame {
     /**
      * Creates new form PlayerFrm
      */
+    private boolean isPlayThread = true;
+
     public PlayerFrm() {
         initComponents();
         this.setTitle("Game đuổi hình bắt chữ");
@@ -33,23 +35,24 @@ public class PlayerFrm extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                while (Client.playerFrm.isDisplayable() && isPlayThread ) {
+                    try {
+                        Message message = new Message("GET_ROOMS_REQUEST", null);
+                        Client.socketHandle.write(message);
+                        Thread.sleep(500);
+                    } catch (InterruptedException | IOException ex) {
+                        JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                    }
+                }
+            }
+        };
+        thread.start();
     }
 
-    // Thread thread = new Thread() {
-    //     @Override
-    //     public void run() {
-    //         while (Client.lst.isDisplayable() && isPlayThread ) {
-    //             try {
-    //                 Message message = new Message("GET_ROOMS_REQUEST", null);
-    //                 Client.socketHandle.write(message);
-    //                 Thread.sleep(500);
-    //             } catch (InterruptedException | IOException ex) {
-    //                 JOptionPane.showMessageDialog(rootPane, ex.getMessage());
-    //             }
-    //         }
-    //     }
-    // };
-    // thread.start();
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,8 +87,11 @@ public class PlayerFrm extends javax.swing.JFrame {
             Users user=lst.get(i);
             data[i][0]=user.getId();
             data[i][1]=user.getUsername();
-            data[i][2]=user.isOnline();
-            data[i][3]=user.isPlaying();
+            data[i][2] = user.isOnline() ? "Đang online" : "Đang offline";
+            data[i][3] = user.isPlaying() ? "Đang chơi" : "Đang chờ";
+            
+
+
         }
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

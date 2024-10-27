@@ -17,7 +17,7 @@ public class SocketHandle implements Runnable {
     @Override
     public void run() {
         try {
-            socketOfClient = new Socket("26.198.43.249", Config.PORT);
+            socketOfClient = new Socket("26.118.21.242", Config.PORT);
             System.out.println("Ket noi thanh cong");
 
             oos = new ObjectOutputStream(socketOfClient.getOutputStream());
@@ -77,7 +77,7 @@ public class SocketHandle implements Runnable {
                     System.out.println(message.getType());
                     System.out.println(message.getObject());
                     Client.lst=(List<Users>) message.getObject();
-                    // Client.openView(Client.View.RANK);
+                    Client.openView(Client.View.RANK);
                 }
 
                 

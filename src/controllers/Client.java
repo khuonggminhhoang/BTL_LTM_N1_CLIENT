@@ -24,6 +24,7 @@ public class Client{
     public static SocketHandle socketHandle;
     public static WaitingRoomFrm waitingRoomFrm;
     public static GameFrm gameFrm;
+    public static RankFrm rankFrm;
     public static PlayerFrm playerFrm;
     public static RoomListFrm roomListFrm;
     
@@ -61,6 +62,10 @@ public class Client{
                 case PLAYER:
                     playerFrm=new PlayerFrm();
                     playerFrm.setVisible(true);
+                    break;
+                case RANK:
+                    rankFrm=new RankFrm();
+                    rankFrm.setVisible(true);
                     break;
             }
         }
@@ -129,4 +134,4 @@ public class Client{
         RANK,
         FRIEND_REQUEST,
     }
-}
+} 
