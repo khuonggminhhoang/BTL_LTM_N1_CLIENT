@@ -79,10 +79,17 @@ public class RankFrm extends javax.swing.JFrame {
         List<Users> lst=Client.lst;
 
         // tạo ra 1 cái colection để sắp xếp người chơi theo tỷ lệ thắng giảm dần
-        Collections.sort(lst,(user1,user2) ->{
-            double rateWin1=(double) user1.getNumberOfWin()/user1.getNumberOfGame();
-            double rateWin2=(double) user2.getNumberOfWin()/user2.getNumberOfGame();     
-            return Double.compare(rateWin2, rateWin1);        
+        Collections.sort(lst, (user1, user2) -> {
+            double rateWin1 = (double) user1.getNumberOfWin() / user1.getNumberOfGame();
+            double rateWin2 = (double) user2.getNumberOfWin() / user2.getNumberOfGame();
+            
+            if (rateWin1 != rateWin2) {
+                // Sắp xếp theo rateWin giảm dần
+                return Double.compare(rateWin2, rateWin1);
+            } else {
+                // Nếu rateWin bằng nhau, sắp xếp theo tên người dùng tăng dần
+                return user1.getUsername().compareTo(user2.getUsername());
+            }
         });
 
         

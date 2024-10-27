@@ -329,7 +329,7 @@ public class HomepageFrm extends javax.swing.JFrame {
 
     private void btnSelectRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectRoomActionPerformed
         Client.closeAllViews();
-        Client.openView(Client.View.ROOM_LIST);
+        // Client.openView(Client.View.ROOM_LIST);
         Message message = new Message("GET_ROOMS_REQUEST", null);
         try {
             Client.socketHandle.write(message);

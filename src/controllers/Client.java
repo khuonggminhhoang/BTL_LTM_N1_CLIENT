@@ -95,6 +95,7 @@ public class Client{
         if(roomListFrm!=null) roomListFrm.dispose();
         if(waitingRoomFrm!=null) waitingRoomFrm.dispose();
         if(gameFrm!=null) gameFrm.dispose();
+        if(rankFrm!=null) rankFrm.dispose();
         if(playerFrm!=null) playerFrm.dispose();
     }
     
