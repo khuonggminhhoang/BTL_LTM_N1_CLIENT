@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.Message;
+import model.Questions;
 import model.Users;
 import system.Config;
 
