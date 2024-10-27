@@ -6,6 +6,7 @@ package views;
 
 import controllers.Client;
 import java.io.IOException;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Message;
@@ -19,6 +20,8 @@ public class GameFrm extends javax.swing.JFrame {
 
     static int point1 = 0;
     static int point2 = 0;
+
+//    private DefaultListModel<String> listModel;
 
     /**
      * Creates new form GameFrm
@@ -34,6 +37,8 @@ public class GameFrm extends javax.swing.JFrame {
         tfAnswer.setText("");
         lblAvatar1.setIcon(new ImageIcon(Client.user.getAvatar()));
         lblUsername1.setText(Client.user.getUsername());
+//        jList1.setModel(listModel);
+
     }
 
     public void setCurrentQuestion(Questions currentQuestion) {
@@ -144,11 +149,6 @@ public class GameFrm extends javax.swing.JFrame {
         lbldiem.setForeground(new java.awt.Color(255, 255, 255));
         lbldiem.setText("Điểm");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Thầy bói xem voi", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(jList1);
 
         jButton1.setText("Thoát trò chơi");
@@ -199,7 +199,7 @@ public class GameFrm extends javax.swing.JFrame {
                     .addComponent(lblPoint1))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -212,11 +212,6 @@ public class GameFrm extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Điểm");
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Thầy bói xem voi", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane3.setViewportView(jList2);
 
         lblAvatar2.setText("Avatar2");
@@ -258,7 +253,7 @@ public class GameFrm extends javax.swing.JFrame {
                     .addComponent(lblPoint2))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         jPanel6.setBackground(new java.awt.Color(102, 102, 102));
@@ -386,6 +381,7 @@ public class GameFrm extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Không thể gửi yêu cầu trả lời câu hỏi. Vui lòng thử lại.");
         }
+//        listModel.addElement(tfAnswer.getText());
         tfAnswer.setText("");
     }//GEN-LAST:event_btnSendAnswerActionPerformed
 
