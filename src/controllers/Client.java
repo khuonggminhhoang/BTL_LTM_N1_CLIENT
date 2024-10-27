@@ -27,7 +27,7 @@ public class Client{
     public static RankFrm rankFrm;
     public static PlayerFrm playerFrm;
     public static RoomListFrm roomListFrm;
-    
+    public static ResultFrm resultFrm;
     public Client(){}
     
     public static void openView(View viewName){
@@ -67,6 +67,9 @@ public class Client{
                     rankFrm=new RankFrm();
                     rankFrm.setVisible(true);
                     break;
+                case RESULT_FRM:
+                    resultFrm = new ResultFrm();
+                    resultFrm.setVisible(true);
             }
         }
     }
@@ -96,6 +99,7 @@ public class Client{
         if(waitingRoomFrm!=null) waitingRoomFrm.dispose();
         if(gameFrm!=null) gameFrm.dispose();
         if(playerFrm!=null) playerFrm.dispose();
+        if (resultFrm!= null) resultFrm.dispose();
     }
     
     
@@ -133,5 +137,6 @@ public class Client{
         PLAYER,
         RANK,
         FRIEND_REQUEST,
+        RESULT_FRM
     }
 } 

@@ -105,6 +105,7 @@ public class SocketHandle implements Runnable {
                 if (message.getType().equals("ANSWER_CORRECT")) {
                     Questions currentQuestion = (Questions) message.getObject();
                     Client.gameFrm.setCurrentQuestion(currentQuestion);
+                    Client.gameFrm.setPoint1();
                 }
                 
                 if (message.getType().equals("ANSWER_TEMP_RESPONSE")) {
@@ -115,6 +116,15 @@ public class SocketHandle implements Runnable {
                 if (message.getType().equals("OTHER_ANSWER_CORRECT")) {
                     Questions currentQuestion = (Questions) message.getObject();
                     Client.gameFrm.setCurrentQuestion(currentQuestion);
+                    Client.gameFrm.setPoint2();
+                }
+                
+                if (message.getType().equals("GAME_OVER")) {
+                    Client.gameFrm.setPoint1();
+                }
+                
+                if (message.getType().equals("WIN_GAME")) {
+                    Client.gameFrm.setPoint1();
                 }
             }
         } catch (IOException | ClassNotFoundException e) {
