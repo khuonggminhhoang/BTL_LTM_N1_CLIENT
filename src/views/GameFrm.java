@@ -29,13 +29,17 @@ public class GameFrm extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         tfAnswer.setText("");
+        lblAvatar1.setIcon(new ImageIcon(Client.user.getAvatar()));
+        lblUsername1.setText(Client.user.getUsername());
     }
 
     
     public void setCurrentQuestion(Questions currentQuestion) {
         lblHint.setText(currentQuestion.getHint());
         lblQuestion.setIcon(new ImageIcon(currentQuestion.getImgPath()));
+//        tfAnswer.setText("");
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +52,7 @@ public class GameFrm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblUsername1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
@@ -95,8 +99,8 @@ public class GameFrm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Lighthouse");
+        lblUsername1.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsername1.setText("Lighthouse");
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Điểm: 0");
@@ -135,7 +139,7 @@ public class GameFrm extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblAvatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
+                            .addComponent(lblUsername1))
                         .addGap(53, 53, 53))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -144,7 +148,7 @@ public class GameFrm extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(lblAvatar1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(lblUsername1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(27, 27, 27)
@@ -329,6 +333,7 @@ public class GameFrm extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Không thể gửi yêu cầu trả lời câu hỏi. Vui lòng thử lại.");
         }
+        tfAnswer.setText("");
     }//GEN-LAST:event_btnSendAnswerActionPerformed
 
     private void tfAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfAnswerActionPerformed
@@ -375,7 +380,6 @@ public class GameFrm extends javax.swing.JFrame {
     private javax.swing.JButton btnSendAnswer;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -393,6 +397,7 @@ public class GameFrm extends javax.swing.JFrame {
     private javax.swing.JLabel lblAvatar2;
     private javax.swing.JLabel lblHint;
     private javax.swing.JLabel lblQuestion;
+    private javax.swing.JLabel lblUsername1;
     private javax.swing.JTextField tfAnswer;
     // End of variables declaration//GEN-END:variables
 }

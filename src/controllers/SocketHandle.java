@@ -88,9 +88,10 @@ public class SocketHandle implements Runnable {
                     
                 }
 
-                if (message.getType().equals("START_GAME")) {
+                if (message.getType().equals("QUESTION")) {
                     Questions firstQuestion = (Questions) message.getObject();
-
+                    System.out.println(firstQuestion.getImgPath());
+                    Client.gameFrm.setCurrentQuestion(firstQuestion);
                 }
                 
                 if (message.getType().equals("JOIN_ROOM_SUCCESS")) {
@@ -100,7 +101,21 @@ public class SocketHandle implements Runnable {
                 if (message.getType().equals("GET_ROOM_REQUEST")) {
                     Client.waitingRoomFrm.setAmountPlayer((int) message.getObject());
                 }
-
+                
+                if (message.getType().equals("ANSWER_CORRECT")) {
+                    Questions currentQuestion = (Questions) message.getObject();
+                    Client.gameFrm.setCurrentQuestion(currentQuestion);
+                }
+                
+                if (message.getType().equals("ANSWER_TEMP_RESPONSE")) {
+//                    String otherAnswer = (String) message.getObject();
+                    
+                }
+                
+                if (message.getType().equals("OTHER_ANSWER_CORRECT")) {
+                    Questions currentQuestion = (Questions) message.getObject();
+                    Client.gameFrm.setCurrentQuestion(currentQuestion);
+                }
             }
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Loi: " + e.getMessage());

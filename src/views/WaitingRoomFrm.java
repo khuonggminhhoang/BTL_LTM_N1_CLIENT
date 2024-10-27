@@ -34,6 +34,10 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+        
+        avatarOwner.setIcon(new ImageIcon(Client.user.getAvatar()));
+        username.setText(Client.user.getUsername());
+        otherAvatar.setIcon(new ImageIcon("D:\\New folder\\Unity projects\\BTL_LTM_N1_CLIENT\\src\\images\\2ten.jpg"));
 
         roomCheckTimer = new Timer(1000, new ActionListener() {
             @Override
@@ -94,7 +98,7 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
         btnReturn = new javax.swing.JButton();
         jProgressBar1 = new javax.swing.JProgressBar();
         avatarOwner = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        otherAvatar = new javax.swing.JLabel();
         username = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
@@ -149,10 +153,8 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
         });
 
         avatarOwner.setBackground(new java.awt.Color(51, 255, 51));
-        avatarOwner.setText("Avatar");
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Avatar");
+        otherAvatar.setBackground(new java.awt.Color(255, 255, 255));
 
         username.setText("username");
 
@@ -168,7 +170,7 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
                         .addComponent(username, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                         .addComponent(avatarOwner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(otherAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52))
             .addGroup(progressBarLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
@@ -182,7 +184,7 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(progressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(otherAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(avatarOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(username)
@@ -263,10 +265,10 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
     private javax.swing.JButton btnReturn;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel lblIdRoom;
+    private javax.swing.JLabel otherAvatar;
     private javax.swing.JPanel progressBar;
     private javax.swing.JLabel username;
     // End of variables declaration//GEN-END:variables
