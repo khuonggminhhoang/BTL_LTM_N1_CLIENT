@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import javax.swing.JOptionPane;
 import model.Message;
+import model.Questions;
 import model.Users;
 import system.Config;
 
@@ -68,8 +69,21 @@ public class SocketHandle implements Runnable {
                 if (message.getType().equals("GET_ROOMS_SUCCESS")) {
                     HashMap<Integer, Integer> map = (HashMap<Integer, Integer>) message.getObject();
                     Client.roomListFrm.setUserQuantity(map);
+                    
                 }
 
+                if (message.getType().equals("START_GAME")) {
+                    Questions firstQuestion = (Questions) message.getObject();
+
+                }
+                
+                if (message.getType().equals("JOIN_ROOM_SUCCESS")) {
+                    System.out.println("Join room success");
+                }
+                
+                if (message.getType().equals("GET_ROOM_REQUEST")) {
+                    Client.waitingRoomFrm.setAmountPlayer((int) message.getObject());
+                }
             }
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Lỗi: " + e.getMessage());

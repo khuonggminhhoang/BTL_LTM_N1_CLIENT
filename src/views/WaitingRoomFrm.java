@@ -4,7 +4,16 @@
  */
 package views;
 
+import controllers.Client;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import model.Message;
 
 /**
  *
@@ -12,18 +21,62 @@ import javax.swing.ImageIcon;
  */
 public class WaitingRoomFrm extends javax.swing.JFrame {
 
-    /**
-     * Creates new form WaitingRoomFrm
-     */
+    private boolean isRoomFull = false;
+    private Timer roomCheckTimer;
+    private int amountPlayer = 0; /**
+             * Creates new form WaitingRoomFrm
+             */
+
     public WaitingRoomFrm() {
         initComponents();
-         this.setTitle("Game đuổi hình bắt chữ");
+        this.setTitle("Game đuổi hình bắt chữ");
         this.setIconImage(new ImageIcon("src/images/convit.jpg").getImage());
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-    }
 
+        roomCheckTimer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Gửi request "GET_ROOM_REQUEST" tới server
+                Message message = new Message("GET_ROOM_REQUEST", "");
+                try {
+                    Client.socketHandle.write(message);
+                } catch (IOException ex) {
+                    Logger.getLogger(WaitingRoomFrm.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("loi ioe");
+                }
+
+                // Đợi phản hồi từ server và xử lý
+//                int amountPlayer = Itneger.parseInt((String) message.getType().equals("GET_ROOM_REQUEST"));
+                System.out.println(amountPlayer);
+                if (amountPlayer == 2) {
+                    Client.closeAllViews();
+                    Client.openView(Client.View.GAME_FRM);
+                    
+                    Message joinRoomMessage = new Message("START_GAME", "");
+                    try {
+                        // Gửi message yêu cầu tham gia phòng đến server
+                        Client.socketHandle.write(joinRoomMessage);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                        JOptionPane.showMessageDialog(WaitingRoomFrm.this, "Không thể gửi yêu cầu tham gia phòng. Vui lòng thử lại.");
+                    }
+//                    roomCheckTimer.stop();
+                }
+            }
+        });
+        roomCheckTimer.start();
+    }
+    
+    @Override
+    public void dispose() {
+        roomCheckTimer.stop(); // Dừng timer
+        super.dispose();
+    }
+    public void setAmountPlayer(int amount) {
+        amountPlayer = amount;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -128,9 +181,9 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(progressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(avatarOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(progressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(avatarOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(username)
                 .addGap(42, 42, 42)
