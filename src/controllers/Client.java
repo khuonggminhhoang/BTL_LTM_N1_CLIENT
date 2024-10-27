@@ -4,7 +4,7 @@
  */
 package controllers;
 
-
+import java.util.HashMap;
 import model.Users;
 import views.*;
 
@@ -16,6 +16,7 @@ import views.*;
 
 public class Client{
     public static Users user;
+    public static HashMap<Integer, Integer> mapRoom;
     public static LoginFrm loginFrm;
     public static RegisterFrm registerFrm;
     public static HomepageFrm homepageFrm;

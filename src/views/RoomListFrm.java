@@ -4,12 +4,18 @@
  */
 package views;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+
+import controllers.Client;
+import model.Message;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +26,8 @@ public class RoomListFrm extends javax.swing.JFrame {
     /**
      * Creates new form RoomListFrm
      */
+    private boolean isPlayThread;
+
     public RoomListFrm() {
         initComponents();
         this.setTitle("Game đuổi hình bắt chữ");
@@ -27,12 +35,34 @@ public class RoomListFrm extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+
+        // setUserQuantity(Client.mapRoom);
+        this.isPlayThread = true;
+
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                while (Client.roomListFrm.isDisplayable() && isPlayThread ) {
+                    try {
+                        Message message = new Message("GET_ROOMS_REQUEST", null);
+                        Client.socketHandle.write(message);
+                        Thread.sleep(500);
+                    } catch (InterruptedException | IOException ex) {
+                        JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+                    }
+                }
+            }
+        };
+        thread.start();
+
     }
 
     public void setUserQuantity(HashMap<Integer, Integer> map) {
-        List<JLabel> arr = new ArrayList<>(List.of(lblNumberOfRoom101, lblNumberOfRoom102, lblNumberOfRoom103, lblNumberOfRoom104, lblNumberOfRoom105, lblNumberOfRoom106));
-        for(JLabel lbl : arr){
-            lbl.setText( map.get(Integer.valueOf(lbl.getName().substring(15)))+ "/2");
+        List<JButton> arrBtn = new ArrayList<>(List.of(btn101, btn102, btn103, btn104, btn105, btn106));
+        List<JLabel> arrLbl = new ArrayList<>(List.of(lblNumberOfRoom101, lblNumberOfRoom102, lblNumberOfRoom103, lblNumberOfRoom104, lblNumberOfRoom105, lblNumberOfRoom106));
+        for(int i=0; i<6; ++i) {
+            int idRoom = Integer.parseInt(arrBtn.get(i).getText());
+            arrLbl.get(i).setText(map.get(idRoom) + "/2");
         }
     }
 
@@ -255,15 +285,15 @@ public class RoomListFrm extends javax.swing.JFrame {
 
         lblUsername.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblUsername.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsername.setText("Admin");
+        lblUsername.setText(Client.user.getUsername());
 
         lblPercentOfWin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblPercentOfWin.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentOfWin.setText("99%");
+        lblPercentOfWin.setText(Math.round(Client.user.getNumberOfWin()*100.0/Client.user.getNumberOfGame()) + "%");
 
         lblNumberOfGame.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNumberOfGame.setForeground(new java.awt.Color(255, 255, 255));
-        lblNumberOfGame.setText("100");
+        lblNumberOfGame.setText(Client.user.getNumberOfGame() + "");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
