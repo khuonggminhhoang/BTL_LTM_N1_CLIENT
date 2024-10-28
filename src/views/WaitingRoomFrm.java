@@ -37,7 +37,7 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
         
         avatarOwner.setIcon(new ImageIcon(Client.user.getAvatar()));
         username.setText(Client.user.getUsername());
-        otherAvatar.setIcon(new ImageIcon("D:\\New folder\\Unity projects\\BTL_LTM_N1_CLIENT\\src\\images\\2ten.jpg"));
+        otherAvatar.setIcon(new ImageIcon("src/images/meoden.jpg"));
 
         roomCheckTimer = new Timer(1000, new ActionListener() {
             @Override

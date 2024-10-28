@@ -401,6 +401,7 @@ public class RoomListFrm extends javax.swing.JFrame {
     private void btn101ActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
         // Tạo một message để yêu cầu tham gia phòng với ID 101
+        isPlayThread = false;
         Client.closeAllViews();
         Client.openView(Client.View.WAITING_ROOM);
         int roomId = 101;
@@ -413,13 +414,12 @@ public class RoomListFrm extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Không thể gửi yêu cầu tham gia phòng. Vui lòng thử lại.");
         }
-        //
        
     }                                      
 
     private void btn102ActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
-        
+        isPlayThread = false;
         Client.closeAllViews();
         Client.openView(Client.View.WAITING_ROOM);
         int roomId = 102;
@@ -436,6 +436,7 @@ public class RoomListFrm extends javax.swing.JFrame {
 
     private void btn103ActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
+        isPlayThread = false;
         Client.closeAllViews();
         Client.openView(Client.View.WAITING_ROOM);
         int roomId = 103;
@@ -452,6 +453,7 @@ public class RoomListFrm extends javax.swing.JFrame {
 
     private void btn104ActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
+        isPlayThread = false;
         Client.closeAllViews();
         Client.openView(Client.View.WAITING_ROOM);
         int roomId = 104;
@@ -468,6 +470,7 @@ public class RoomListFrm extends javax.swing.JFrame {
 
     private void btn105ActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
+        isPlayThread = false;
         Client.closeAllViews();
         Client.openView(Client.View.WAITING_ROOM);
         int roomId = 105;
@@ -484,6 +487,7 @@ public class RoomListFrm extends javax.swing.JFrame {
 
     private void btn106ActionPerformed(java.awt.event.ActionEvent evt) {                                       
         // TODO add your handling code here:
+        isPlayThread = false;
         Client.closeAllViews();
         Client.openView(Client.View.WAITING_ROOM);
         int roomId = 106;
@@ -500,6 +504,8 @@ public class RoomListFrm extends javax.swing.JFrame {
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
+        Client.closeAllViews();
+        Client.openView(Client.View.HOMEPAGE);
     }                                         
 
     /**

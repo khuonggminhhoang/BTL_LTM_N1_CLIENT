@@ -6,7 +6,6 @@ package views;
 
 import controllers.Client;
 import java.io.IOException;
-import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Message;
@@ -57,8 +56,12 @@ public class GameFrm extends javax.swing.JFrame {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Không thể gửi yêu cầu win game. Vui lòng thử lại.");
             }
-            Client.closeAllViews();
-            Client.openView(Client.View.RESULT_FRM);
+            if((point1 + point2 == 3) || (point1 == 2 && point2 == 0) || (point1 == 0 && point2 == 2)) {
+                Client.closeAllViews();
+                Client.openView(Client.View.RESULT_FRM);
+                point1 = 0;
+                point2 = 0;
+            }
         }
     }
 
@@ -75,8 +78,12 @@ public class GameFrm extends javax.swing.JFrame {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(this, "Không thể gửi yêu cầu win game. Vui lòng thử lại.");
             }
-            Client.closeAllViews();
-            Client.openView(Client.View.RESULT_FRM);
+            if((point1 + point2 == 3) || (point1 == 2 && point2 == 0) || (point1 == 0 && point2 == 2)) {
+                Client.closeAllViews();
+                Client.openView(Client.View.RESULT_FRM);
+                point1 = 0;
+                point2 = 0;
+            }
         }
     }
 
@@ -385,7 +392,7 @@ public class GameFrm extends javax.swing.JFrame {
 
     private void btnSendAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendAnswerActionPerformed
         // TODO add your handling code here:
-
+        txaOwner.setText(txaOwner.getText() + tfAnswer.getText() + "\n");
         Message sendAnswerMessage = new Message("SEND_ANSWER", tfAnswer.getText());
 
         try {
@@ -396,7 +403,7 @@ public class GameFrm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Không thể gửi yêu cầu trả lời câu hỏi. Vui lòng thử lại.");
         }
         
-        txaOwner.setText(txaOwner.getText() + tfAnswer.getText() + "\n");
+        
         tfAnswer.setText("");
     }//GEN-LAST:event_btnSendAnswerActionPerformed
 
