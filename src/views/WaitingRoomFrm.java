@@ -59,9 +59,11 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
                     Client.openView(Client.View.GAME_FRM);
                     
                     Message joinRoomMessage = new Message("START_GAME", "");
+                    // Message sendOtherUser = new Message("GET_OTHER_USER", null);
                     try {
                         // Gửi message yêu cầu tham gia phòng đến server
                         Client.socketHandle.write(joinRoomMessage);
+                        // Client.socketHandle.write(sendOtherUser);
                     } catch (IOException ex) {
                         ex.printStackTrace();
                         JOptionPane.showMessageDialog(WaitingRoomFrm.this, "Không thể gửi yêu cầu tham gia phòng. Vui lòng thử lại.");
