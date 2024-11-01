@@ -85,7 +85,6 @@ public class SocketHandle implements Runnable {
                 if (message.getType().equals("GET_ROOMS_SUCCESS")) {
                     HashMap<Integer, Integer> map = (HashMap<Integer, Integer>) message.getObject();
                     Client.roomListFrm.setUserQuantity(map);
-                    
                 }
 
                 if (message.getType().equals("QUESTION")) {
@@ -123,9 +122,14 @@ public class SocketHandle implements Runnable {
                     Client.gameFrm.setPoint1();
                 }
                 
-                if (message.getType().equals("WIN_GAME")) {
-                    Client.gameFrm.setPoint1();
+                if (message.getType().equals("ANSWER_INCORRECT")) {
+                    Client.gameFrm.showError("Đáp án không chính xác");
+
                 }
+
+                // if (message.getType().equals("OTHER_WIN_GAME")) {
+                //     Client.gameFrm.setPoint2();
+                // }
 
                 if(message.getType().equals("OTHER_USER")) {
                     Users otherUser = (Users)message.getObject();

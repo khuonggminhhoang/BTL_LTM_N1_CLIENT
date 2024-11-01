@@ -39,6 +39,7 @@ public class HomepageFrm extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         jTextField1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -62,10 +63,6 @@ public class HomepageFrm extends javax.swing.JFrame {
         txaChatWorld = new javax.swing.JTextArea();
         txtMessage = new javax.swing.JTextField();
         btnSendMessage = new javax.swing.JButton();
-
-        txaChatWorld.setEditable(false);
-        txaChatWorld.setWrapStyleWord(true);
-        txaChatWorld.setLineWrap(true);
 
         jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -96,25 +93,23 @@ public class HomepageFrm extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText(Client.user.getUsername());
+        jLabel7.setText("Tên người chơi:");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText(Client.user.getNumberOfGame() + "");
+        jLabel9.setText("Số ván chơi:");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText(Client.user.getNumberOfWin() + "");
+        jLabel10.setText("Số ván thắng:");
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText(Math.round(Client.user.getNumberOfWin() * 1.0 / Client.user.getNumberOfGame() * 100) + "%");
+        jLabel11.setText("Tỉ lệ thắng:");
 
         avatar.setBackground(new java.awt.Color(102, 102, 102));
         avatar.setForeground(new java.awt.Color(255, 255, 255));
-        // avatar.setText("Avatar");
-        avatar.setIcon(new ImageIcon(Client.user.getAvatar()));
-        
+        avatar.setText("Avatar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -135,7 +130,7 @@ public class HomepageFrm extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(jLabel9)
                     .addComponent(jLabel7))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +172,7 @@ public class HomepageFrm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(164, 164, 164)
                 .addComponent(jLabel2)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,7 +217,7 @@ public class HomepageFrm extends javax.swing.JFrame {
         });
 
         btnPlayGame.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnPlayGame.setText("Vào chơi");
+        btnPlayGame.setText("Lịch sử đấu");
         btnPlayGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayGameActionPerformed(evt);
@@ -253,17 +248,17 @@ public class HomepageFrm extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSelectRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                     .addComponent(btnGetListPlayer, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                     .addComponent(btnGetRank, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                     .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSelectRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                     .addComponent(btnPlayGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSendMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnSendMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addGap(20, 20, 20))
         );
@@ -274,12 +269,12 @@ public class HomepageFrm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnSelectRoom)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnPlayGame)
                         .addGap(18, 18, 18)
-                        .addComponent(btnSelectRoom)
-                        .addGap(18, 18, 18)
                         .addComponent(btnGetListPlayer)
-                        .addGap(18, 18, 18)
+                        .addGap(23, 23, 23)
                         .addComponent(btnGetRank)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

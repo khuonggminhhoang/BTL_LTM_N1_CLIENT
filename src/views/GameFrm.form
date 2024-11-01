@@ -23,19 +23,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="jPanel1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel2" min="-2" pref="186" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel6" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -50,7 +50,7 @@
                   <Component id="jPanel4" max="32767" attributes="0"/>
                   <Component id="jPanel6" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -67,7 +67,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="336" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="292" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -108,7 +108,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace pref="36" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -118,20 +118,17 @@
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblAvatar1" min="-2" pref="78" max="-2" attributes="0"/>
-                                  <Component id="lblUsername1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="lblAvatar1" max="32767" attributes="0"/>
+                                  <Component id="lblUsername1" pref="78" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="170" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="156" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -140,8 +137,8 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="lblAvatar1" min="-2" pref="68" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <Component id="lblAvatar1" min="-2" pref="77" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lblUsername1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -150,10 +147,8 @@
                       <Component id="lblPoint1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="151" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane1" pref="160" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -164,6 +159,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Lighthouse"/>
           </Properties>
         </Component>
@@ -175,18 +171,7 @@
             <Property name="text" type="java.lang.String" value="&#x110;i&#x1ec3;m"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Tho&#xe1;t tr&#xf2; ch&#x1a1;i"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="lblAvatar1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Avatar1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblPoint1">
           <Properties>
@@ -230,9 +215,9 @@
                           <EmptySpace min="0" pref="48" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="lblAvatar2" min="-2" pref="81" max="-2" attributes="0"/>
-                                      <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="lblAvatar2" pref="81" max="32767" attributes="0"/>
+                                      <Component id="jLabel7" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                               </Group>
@@ -277,6 +262,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Lighthouse"/>
           </Properties>
         </Component>
@@ -289,9 +275,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblAvatar2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Avatar2"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblPoint2">
           <Properties>
@@ -329,109 +312,125 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="189" max="32767" attributes="0"/>
-                  <Component id="btnSendAnswer" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="208" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="38" pref="44" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblQuestion" alignment="1" min="-2" pref="300" max="-2" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lblHint" alignment="0" pref="312" max="32767" attributes="0"/>
-                                  <Component id="tfAnswer" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="lblQuestion" min="-2" pref="322" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
-                  <Component id="jProgressBar1" min="-2" pref="166" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace pref="25" max="32767" attributes="0"/>
                   <Component id="lblQuestion" min="-2" pref="160" max="-2" attributes="0"/>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
-                  <Component id="jProgressBar1" min="-2" pref="4" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="lblHint" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                  <Component id="tfAnswer" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnSendAnswer" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel6">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Nh&#x1ead;p c&#xe2;u tr&#x1ea3; l&#x1edd;i:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JProgressBar" name="jProgressBar1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnSendAnswer">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="G&#x1eed;i"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSendAnswerActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblHint">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Hint: &#x1ea3;nh c&#xf3; 2 con voi 3 &#xf4;ng th&#x1ea7;y b&#xf3;i"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tfAnswer">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfAnswerActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="lblQuestion">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel4"/>
-          </Properties>
         </Component>
+        <Container class="javax.swing.JPanel" name="jPanel3">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblHint" alignment="1" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel6" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
+                          <Component id="tfAnswer" alignment="0" min="-2" pref="322" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                      <Component id="btnSendAnswer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jProgressBar1" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <Component id="jProgressBar1" min="-2" pref="15" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lblHint" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="tfAnswer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnSendAnswer" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JProgressBar" name="jProgressBar1">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblHint">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Hint: &#x1ea3;nh c&#xf3; 2 con voi 3 &#xf4;ng th&#x1ea7;y b&#xf3;i"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel6">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="Nh&#x1ead;p c&#xe2;u tr&#x1ea3; l&#x1edd;i:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="tfAnswer">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfAnswerActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnSendAnswer">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="G&#x1eed;i"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSendAnswerActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>
