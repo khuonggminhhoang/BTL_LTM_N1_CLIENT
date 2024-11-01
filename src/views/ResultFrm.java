@@ -21,7 +21,7 @@ public class ResultFrm extends javax.swing.JFrame {
      */
     public ResultFrm() {
         initComponents();
-         this.setTitle("Game đuổi hình bắt chữ");
+        this.setTitle("Game đuổi hình bắt chữ");
         this.setIconImage(new ImageIcon("src/images/convit.jpg").getImage());
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -30,6 +30,17 @@ public class ResultFrm extends javax.swing.JFrame {
         lblAvatar.setIcon(new ImageIcon(Client.user.getAvatar()));
         lblUsername.setText(Client.user.getUsername());
         lblPoint.setText(String.valueOf(GameFrm.point1));
+
+        String resultGame = GameFrm.point1 < 2 ? "loss": "win"; 
+
+        // thêm điều kiện icon win or loss
+        Message message = new Message("UPDATE_USER_REQUEST", resultGame);
+        try {
+            Client.socketHandle.write(message);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     /**

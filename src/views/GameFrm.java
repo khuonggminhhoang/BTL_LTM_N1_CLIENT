@@ -38,6 +38,9 @@ public class GameFrm extends javax.swing.JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(Client.homepageFrm);
 
+        txaOwner.setEditable(false);
+        txaOpponent.setEditable(false);
+
         tfAnswer.setText("");
         lblAvatar1.setIcon(new ImageIcon(Client.user.getAvatar()));
         lblUsername1.setText(Client.user.getUsername());

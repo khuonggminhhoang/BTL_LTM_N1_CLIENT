@@ -36,6 +36,10 @@ public class RoomListFrm extends javax.swing.JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
+        lblUsername.setText(Client.user.getUsername());
+        lblPercentOfWin.setText(Math.round(Client.user.getNumberOfWin()*100.0/Client.user.getNumberOfGame()) + "%");
+        lblNumberOfGame.setText(Client.user.getNumberOfGame() + "");
+        
         // setUserQuantity(Client.mapRoom);
         this.isPlayThread = true;
 
@@ -285,15 +289,12 @@ public class RoomListFrm extends javax.swing.JFrame {
 
         lblUsername.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblUsername.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsername.setText(Client.user.getUsername());
 
         lblPercentOfWin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblPercentOfWin.setForeground(new java.awt.Color(255, 255, 255));
-        lblPercentOfWin.setText(Math.round(Client.user.getNumberOfWin()*100.0/Client.user.getNumberOfGame()) + "%");
 
         lblNumberOfGame.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblNumberOfGame.setForeground(new java.awt.Color(255, 255, 255));
-        lblNumberOfGame.setText(Client.user.getNumberOfGame() + "");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);

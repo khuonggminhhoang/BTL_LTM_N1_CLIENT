@@ -33,7 +33,8 @@ public class HomepageFrm extends javax.swing.JFrame {
         jLabel7.setText(Client.user.getUsername());
         jLabel9.setText(Client.user.getNumberOfGame() + "");
         jLabel10.setText(Client.user.getNumberOfWin() + "");
-        jLabel11.setText(String.format("%.02f", Client.user.getNumberOfWin() * 100.0/Client.user.getNumberOfGame()));
+        jLabel11.setText(String.format("%.02f", Client.user.getNumberOfWin() * 100.0/Client.user.getNumberOfGame()) + "%");
+        System.out.println("tỉ lệ thắng: " +  Client.user.getNumberOfWin() * 100.0/Client.user.getNumberOfGame() + "%");
         avatar.setIcon(new ImageIcon(Client.user.getAvatar()));
     }
     
