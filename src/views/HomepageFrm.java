@@ -29,6 +29,12 @@ public class HomepageFrm extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+
+        jLabel7.setText(Client.user.getUsername());
+        jLabel9.setText(Client.user.getNumberOfGame() + "");
+        jLabel10.setText(Client.user.getNumberOfWin() + "");
+        jLabel11.setText(String.format("%.02f", Client.user.getNumberOfWin() * 100.0/Client.user.getNumberOfGame()));
+        avatar.setIcon(new ImageIcon(Client.user.getAvatar()));
     }
     
     /**
