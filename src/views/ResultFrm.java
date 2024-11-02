@@ -35,6 +35,7 @@ public class ResultFrm extends javax.swing.JFrame {
 
         // thêm điều kiện icon win or loss
         Message message = new Message("UPDATE_USER_REQUEST", resultGame);
+
         try {
             Client.socketHandle.write(message);
         } catch (IOException e) {
