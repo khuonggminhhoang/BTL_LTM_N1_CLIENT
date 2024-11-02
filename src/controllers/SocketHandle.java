@@ -11,11 +11,12 @@ import model.Users;
 import system.Config;
 
 public class SocketHandle implements Runnable {
+
     // private Users currUser;
     private ObjectOutputStream oos;
     private ObjectInputStream ois;
     private Socket socketOfClient;
-    
+
     @Override
     public void run() {
         try {
@@ -31,7 +32,7 @@ public class SocketHandle implements Runnable {
                 if (message == null) {
                     break;
                 }
-                
+
                 // Đăng nhập thành công
                 if (message.getType().equals("LOGIN_SUCCESS")) {
                     Client.user = (Users) message.getObject();
@@ -40,7 +41,7 @@ public class SocketHandle implements Runnable {
                     Client.openView(Client.View.HOMEPAGE);
                 }
                 // Đăng kí thành công
-                if (message.getType().equals("REGISTER_SUCCESS")){
+                if (message.getType().equals("REGISTER_SUCCESS")) {
                     System.out.println("Dang ki thanh cong");
                     Client.closeAllViews();
                     Client.openView(Client.View.LOGIN);
@@ -48,13 +49,13 @@ public class SocketHandle implements Runnable {
                 }
 
                 // Sai thông tin tài khoản
-                if (message.getType().equals("LOGIN_FAIL")){
+                if (message.getType().equals("LOGIN_FAIL")) {
                     System.out.println("Sai thong tin dang nhap");
                     Client.loginFrm.showError("Tài khoản hoặc mật khẩu không chính xác");
                 }
 
                 //Xử lý trùng tên 
-                if (message.getType().equals("REGISTER_FAIL")){
+                if (message.getType().equals("REGISTER_FAIL")) {
                     JOptionPane.showMessageDialog(Client.registerFrm, "Tên tài khoản đã được người khác sử dụng");
                 }
 
@@ -66,26 +67,26 @@ public class SocketHandle implements Runnable {
                 }
 
                 // Lấy về danh sách người chơi get all user request
-                if(message.getType().equals("GET_ALL_USER_SUCCESS")){
+                if (message.getType().equals("GET_ALL_USER_SUCCESS")) {
                     System.out.println(message.getType());
                     System.out.println(message.getObject());
-                    Client.lst=(List<Users>)message.getObject();
+                    Client.lst = (List<Users>) message.getObject();
                     Client.openView(Client.View.PLAYER);
                 }
 
-
                 // lấy về bảng xếp hạng view rank request
-                if( message.getType().equals("VIEW_RANK_SUCCESS")){
+                if (message.getType().equals("VIEW_RANK_SUCCESS")) {
                     System.out.println(message.getType());
                     System.out.println(message.getObject());
-                    Client.lst=(List<Users>) message.getObject();
+                    Client.lst = (List<Users>) message.getObject();
                     Client.openView(Client.View.RANK);
                 }
 
                 if (message.getType().equals("GET_ROOMS_SUCCESS")) {
                     HashMap<Integer, Integer> map = (HashMap<Integer, Integer>) message.getObject();
-                    if(Client.roomListFrm != null) 
+                    if (Client.roomListFrm != null) {
                         Client.roomListFrm.setUserQuantity(map);
+                    }
                 }
 
                 if (message.getType().equals("QUESTION")) {
@@ -93,36 +94,36 @@ public class SocketHandle implements Runnable {
                     System.out.println(firstQuestion.getImgPath());
                     Client.gameFrm.setCurrentQuestion(firstQuestion);
                 }
-                
+
                 if (message.getType().equals("JOIN_ROOM_SUCCESS")) {
                     System.out.println("Join room success");
                 }
-                
+
                 if (message.getType().equals("GET_ROOM_REQUEST")) {
                     Client.waitingRoomFrm.setAmountPlayer((int) message.getObject());
                 }
-                
+
                 if (message.getType().equals("ANSWER_CORRECT")) {
                     Questions currentQuestion = (Questions) message.getObject();
                     Client.gameFrm.setCurrentQuestion(currentQuestion);
                     Client.gameFrm.setPoint1();
                 }
-                
+
                 if (message.getType().equals("ANSWER_TEMP_RESPONSE")) {
                     String otherAnswer = (String) message.getObject();
                     Client.gameFrm.setAnswer(otherAnswer);
                 }
-                
+
                 if (message.getType().equals("OTHER_ANSWER_CORRECT")) {
                     Questions currentQuestion = (Questions) message.getObject();
                     Client.gameFrm.setCurrentQuestion(currentQuestion);
                     Client.gameFrm.setPoint2();
                 }
-                
+
                 if (message.getType().equals("GAME_OVER")) {
                     Client.gameFrm.setPoint1();
                 }
-                
+
                 if (message.getType().equals("ANSWER_INCORRECT")) {
                     Client.gameFrm.showError("Đáp án không chính xác");
 
@@ -131,10 +132,19 @@ public class SocketHandle implements Runnable {
                 // if (message.getType().equals("OTHER_WIN_GAME")) {
                 //     Client.gameFrm.setPoint2();
                 // }
-
-                if(message.getType().equals("OTHER_USER")) {
-                    Users otherUser = (Users)message.getObject();
+                if (message.getType().equals("OTHER_USER")) {
+                    Users otherUser = (Users) message.getObject();
                     Client.gameFrm.setOtherUser(otherUser);
+                }
+
+                if (message.getType().equals("TIMEOUT")) {
+                    Questions questions = (Questions) message.getObject();
+                    Client.gameFrm.setCurrentQuestion(questions);
+                }
+
+                if (message.getType().equals("FINISH_GAME")) {
+                    Client.closeAllViews();
+                    Client.openView(Client.View.RESULT_FRM);
                 }
             }
         } catch (IOException | ClassNotFoundException e) {
@@ -142,9 +152,15 @@ public class SocketHandle implements Runnable {
         } finally {
             // Đóng tài nguyên
             try {
-                if (ois != null) ois.close();
-                if (oos != null) oos.close();
-                if (socketOfClient != null) socketOfClient.close();
+                if (ois != null) {
+                    ois.close();
+                }
+                if (oos != null) {
+                    oos.close();
+                }
+                if (socketOfClient != null) {
+                    socketOfClient.close();
+                }
             } catch (IOException e) {
                 System.err.println("Lỗi khi đóng tài nguyên: " + e.getMessage());
             }

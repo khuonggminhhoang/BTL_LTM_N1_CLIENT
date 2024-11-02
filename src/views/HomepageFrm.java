@@ -65,7 +65,7 @@ public class HomepageFrm extends javax.swing.JFrame {
         btnSelectRoom = new javax.swing.JButton();
         btnGetRank = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
-        btnPlayGame = new javax.swing.JButton();
+        btnHistoryGame = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txaChatWorld = new javax.swing.JTextArea();
         txtMessage = new javax.swing.JTextField();
@@ -223,11 +223,11 @@ public class HomepageFrm extends javax.swing.JFrame {
             }
         });
 
-        btnPlayGame.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnPlayGame.setText("Lịch sử đấu");
-        btnPlayGame.addActionListener(new java.awt.event.ActionListener() {
+        btnHistoryGame.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnHistoryGame.setText("Lịch sử đấu");
+        btnHistoryGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlayGameActionPerformed(evt);
+                btnHistoryGameActionPerformed(evt);
             }
         });
 
@@ -259,7 +259,7 @@ public class HomepageFrm extends javax.swing.JFrame {
                     .addComponent(btnGetRank, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
                     .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnSelectRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                    .addComponent(btnPlayGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnHistoryGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -278,7 +278,7 @@ public class HomepageFrm extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSelectRoom)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnPlayGame)
+                        .addComponent(btnHistoryGame)
                         .addGap(18, 18, 18)
                         .addComponent(btnGetListPlayer)
                         .addGap(23, 23, 23)
@@ -362,9 +362,10 @@ public class HomepageFrm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void btnPlayGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayGameActionPerformed
+    private void btnHistoryGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryGameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnPlayGameActionPerformed
+        
+    }//GEN-LAST:event_btnHistoryGameActionPerformed
 
     private void txtMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMessageActionPerformed
         // TODO add your handling code here:
@@ -436,8 +437,8 @@ public class HomepageFrm extends javax.swing.JFrame {
     private javax.swing.JLabel avatar;
     private javax.swing.JButton btnGetListPlayer;
     private javax.swing.JButton btnGetRank;
+    private javax.swing.JButton btnHistoryGame;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnPlayGame;
     private javax.swing.JButton btnSelectRoom;
     private javax.swing.JButton btnSendMessage;
     private javax.swing.JLabel jLabel1;

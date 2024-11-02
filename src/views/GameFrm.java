@@ -56,17 +56,27 @@ public class GameFrm extends javax.swing.JFrame {
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             int progressValue = 0;
+
             @Override
             public void run() {
                 if (progressValue < 100) {
                     ++progressValue;
                     jProgressBar1.setValue(progressValue);
                 } else {
+                    System.out.println("Timeout");
+                    Message finishGameMessage = new Message("SEND_ANSWER", "TIMEOUT!!!");
+                    System.out.println(finishGameMessage);
+                    try {
+                        Client.socketHandle.write(finishGameMessage);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+//                        JOptionPane.showMessageDialog(this, "Không thể gửi yêu cầu finish game. Vui lòng thử lại.");
+                    }
                     progressValue = 0;
                 }
 
             }
-        }, 1000, 150);
+        }, 1000, 100);
 
     }
 
