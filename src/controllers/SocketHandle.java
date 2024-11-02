@@ -84,7 +84,8 @@ public class SocketHandle implements Runnable {
 
                 if (message.getType().equals("GET_ROOMS_SUCCESS")) {
                     HashMap<Integer, Integer> map = (HashMap<Integer, Integer>) message.getObject();
-                    Client.roomListFrm.setUserQuantity(map);
+                    if(Client.roomListFrm != null) 
+                        Client.roomListFrm.setUserQuantity(map);
                 }
 
                 if (message.getType().equals("QUESTION")) {
