@@ -40,7 +40,6 @@ public class RoomListFrm extends javax.swing.JFrame {
         lblPercentOfWin.setText(Math.round(Client.user.getNumberOfWin()*100.0/Client.user.getNumberOfGame()) + "%");
         lblNumberOfGame.setText(Client.user.getNumberOfGame() + "");
         
-        // setUserQuantity(Client.mapRoom);
         this.isPlayThread = true;
 
         Thread thread = new Thread() {
@@ -61,13 +60,28 @@ public class RoomListFrm extends javax.swing.JFrame {
 
     }
 
+    public void setIsPlayThread (boolean isPlayThread) {
+        this.isPlayThread = isPlayThread;
+    }
+
     public void setUserQuantity(HashMap<Integer, Integer> map) {
         List<JButton> arrBtn = new ArrayList<>(List.of(btn101, btn102, btn103, btn104, btn105, btn106));
         List<JLabel> arrLbl = new ArrayList<>(List.of(lblNumberOfRoom101, lblNumberOfRoom102, lblNumberOfRoom103, lblNumberOfRoom104, lblNumberOfRoom105, lblNumberOfRoom106));
         for (int i = 0; i < 6; ++i) {
             int idRoom = Integer.parseInt(arrBtn.get(i).getText());
-            arrLbl.get(i).setText(map.get(idRoom) + "/2");
+            int userCount=map.getOrDefault(idRoom,0);
+            arrLbl.get(i).setText(userCount+"/2");
+
+            if(userCount==2){
+                arrBtn.get(i).setBackground(new java.awt.Color(255, 51, 51));
+                arrBtn.get(i).setEnabled(false);
+            }else{
+                arrBtn.get(i).setBackground(new java.awt.Color(51, 204, 0));
+                arrBtn.get(i).setEnabled(true);
+            }
+
         }
+
     }
 
     /**
@@ -425,7 +439,7 @@ public class RoomListFrm extends javax.swing.JFrame {
         Client.openView(Client.View.WAITING_ROOM);
         int roomId = 102;
         Message joinRoomMessage = new Message("JOIN_ROOM_REQUEST", roomId);
-
+        
         try {
             // Gửi message yêu cầu tham gia phòng đến server
             Client.socketHandle.write(joinRoomMessage);

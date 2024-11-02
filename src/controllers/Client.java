@@ -5,6 +5,7 @@
 package controllers;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 import model.Users;
 import views.*;
@@ -28,6 +29,10 @@ public class Client{
     public static PlayerFrm playerFrm;
     public static RoomListFrm roomListFrm;
     public static ResultFrm resultFrm;
+
+    public static LocalDateTime timeStart;
+    public static LocalDateTime timeEnd;
+
     public Client(){}
     
     public static void openView(View viewName){
@@ -77,19 +82,21 @@ public class Client{
     public static void closeView(View viewName){
         if(viewName!=null){
             switch(viewName){
-                    case LOGIN:
-                        loginFrm.dispose();
-                        break;
-                    case REGISTER:
-                        registerFrm.dispose();
-                        break;
-                    case HOMEPAGE:
-                        homepageFrm.dispose();
-                        break;
+                case LOGIN:
+                    loginFrm.dispose();
+                    break;
+                case REGISTER:
+                    registerFrm.dispose();
+                    break;
+                case HOMEPAGE:
+                    homepageFrm.dispose();
+                    break;
+                case WAITING_ROOM:
+                    waitingRoomFrm.dispose();
+                    break;
             }
         }
     }
-
         
     public static void closeAllViews(){
         if(loginFrm!=null) loginFrm.dispose();
@@ -100,6 +107,7 @@ public class Client{
         if(gameFrm!=null) gameFrm.dispose();
         if(playerFrm!=null) playerFrm.dispose();
         if (resultFrm!= null) resultFrm.dispose();
+        if (rankFrm!= null) rankFrm.dispose();
     }
     
     
