@@ -7,6 +7,7 @@ package controllers;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import model.Histories;
 import model.Users;
 import views.*;
 
@@ -19,6 +20,7 @@ import views.*;
 public class Client{
     public static Users user;
     public static List<Users> lst;
+    public static List<Histories> hisLst;
     public static LoginFrm loginFrm;
     public static RegisterFrm registerFrm;
     public static HomepageFrm homepageFrm;
@@ -29,6 +31,7 @@ public class Client{
     public static PlayerFrm playerFrm;
     public static RoomListFrm roomListFrm;
     public static ResultFrm resultFrm;
+    public static HistoryFrm historyFrm;
 
     public static LocalDateTime timeStart;
     public static LocalDateTime timeEnd;
@@ -75,6 +78,11 @@ public class Client{
                 case RESULT_FRM:
                     resultFrm = new ResultFrm();
                     resultFrm.setVisible(true);
+                    break;
+                case HISTORY_FRM:
+                    historyFrm=new HistoryFrm();
+                    historyFrm.setVisible(true);
+                    break;
             }
         }
     }
@@ -94,6 +102,9 @@ public class Client{
                 case WAITING_ROOM:
                     waitingRoomFrm.dispose();
                     break;
+                case HISTORY_FRM:
+                    historyFrm.dispose();
+                    break;    
             }
         }
     }
@@ -106,8 +117,9 @@ public class Client{
         if(waitingRoomFrm!=null) waitingRoomFrm.dispose();
         if(gameFrm!=null) gameFrm.dispose();
         if(playerFrm!=null) playerFrm.dispose();
-        if (resultFrm!= null) resultFrm.dispose();
-        if (rankFrm!= null) rankFrm.dispose();
+        if(resultFrm!= null) resultFrm.dispose();
+        if(rankFrm!= null) rankFrm.dispose();
+        if(historyFrm!=null) historyFrm.dispose();
     }
     
     
@@ -145,6 +157,7 @@ public class Client{
         PLAYER,
         RANK,
         FRIEND_REQUEST,
-        RESULT_FRM
+        RESULT_FRM,
+        HISTORY_FRM
     }
 } 
