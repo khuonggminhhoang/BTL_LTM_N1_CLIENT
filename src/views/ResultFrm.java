@@ -35,14 +35,14 @@ public class ResultFrm extends javax.swing.JFrame {
         lblUsername.setText(Client.user.getUsername());
         lblPoint.setText(String.valueOf(GameFrm.point1));
 
-        String resultGame = GameFrm.point1 < 2 ? "loss": "win"; 
+        String resultGame = GameFrm.point1 < GameFrm.point2 ? "loss":  GameFrm.point1 == GameFrm.point2 ? "draw" : "win"; 
 
         // thêm điều kiện icon win or loss
         Message message = new Message("UPDATE_USER_REQUEST", resultGame);
 
         // cập nhật lịch sử đấu
         boolean isWin = resultGame.equals("win") ? true : false;
-        Histories history = new Histories(Client.timeStart, Client.timeEnd, isWin, 0, 0);
+        Histories history = new Histories(Client.timeStart, Client.timeEnd, isWin, null, null);
         Message sendHistory = new Message("UPDATE_HISTORY_REQUEST", history);
 
         try {
