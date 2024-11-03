@@ -370,9 +370,16 @@ public class HomepageFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void btnHistoryGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryGameActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnHistoryGameActionPerformed
+        Message message =new Message("GET_HISTORY_REQUEST",null);
+        // System.out.println(message.getObject());
+        // System.out.println(message.getType());
+        try {
+            Client.socketHandle.write(message);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
     private void txtMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMessageActionPerformed
         // TODO add your handling code here:

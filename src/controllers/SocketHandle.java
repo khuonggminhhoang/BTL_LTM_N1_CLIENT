@@ -5,8 +5,6 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.JOptionPane;
-
-import model.Histories;
 import model.Message;
 import model.Questions;
 import model.Users;
@@ -22,7 +20,7 @@ public class SocketHandle implements Runnable {
     @Override
     public void run() {
         try {
-            socketOfClient = new Socket("localhost", Config.PORT);
+            socketOfClient = new Socket("26.251.163.134", Config.PORT);
             System.out.println("Ket noi thanh cong");
 
             oos = new ObjectOutputStream(socketOfClient.getOutputStream());
@@ -153,6 +151,16 @@ public class SocketHandle implements Runnable {
                 if (message.getType().equals("FINISH_GAME")) {
                     Client.closeAllViews();
                     Client.openView(Client.View.RESULT_FRM);
+                }
+
+                // lấy lịch sử đấu
+                if(message.getType().equals("GET_HISTORY_SUCCESS")){
+                    // System.out.println(message.getType());
+                    // System.out.println(message.getObject());
+                    System.out.println("VANh yêu chi");
+                    // Client.hisLst=(List<Histories>)message.getObject();
+                    // System.out.print(Client.hisLst);
+                    // Client.openView(Client.View.HISTORY_FRM);
                 }
             }
         } catch (IOException | ClassNotFoundException e) {
