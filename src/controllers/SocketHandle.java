@@ -5,6 +5,8 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.JOptionPane;
+
+import model.Histories;
 import model.Message;
 import model.Questions;
 import model.Users;
@@ -131,7 +133,9 @@ public class SocketHandle implements Runnable {
 
                 // if (message.getType().equals("OTHER_WIN_GAME")) {
                 //     Client.gameFrm.setPoint2();
+                //     Histories x = new Histories();
                 // }
+                
                 if (message.getType().equals("OTHER_USER")) {
                     Users otherUser = (Users) message.getObject();
                     Client.gameFrm.setOtherUser(otherUser);

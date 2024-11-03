@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.TimerTask;
 
 import model.Message;
@@ -38,6 +39,8 @@ public class GameFrm extends javax.swing.JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(Client.homepageFrm);
 
+        Client.timeStart = LocalDateTime.now();
+
         txaOwner.setEditable(false);
         txaOpponent.setEditable(false);
 
@@ -55,12 +58,12 @@ public class GameFrm extends javax.swing.JFrame {
         // Tạo timer để cập nhật thanh tiến trình
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
-            int progressValue = 0;
+            int progressValue = 100;
 
             @Override
             public void run() {
-                if (progressValue < 100) {
-                    ++progressValue;
+                if (progressValue > 0) {
+                    --progressValue;
                     jProgressBar1.setValue(progressValue);
                 } else {
                     System.out.println("Timeout");
@@ -72,7 +75,7 @@ public class GameFrm extends javax.swing.JFrame {
                         e.printStackTrace();
 //                        JOptionPane.showMessageDialog(this, "Không thể gửi yêu cầu finish game. Vui lòng thử lại.");
                     }
-                    progressValue = 0;
+                    progressValue = 100;
                 }
 
             }

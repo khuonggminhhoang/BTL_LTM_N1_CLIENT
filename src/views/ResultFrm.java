@@ -6,8 +6,10 @@ package views;
 
 import controllers.Client;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import model.Histories;
 import model.Message;
 
 /**
@@ -26,6 +28,8 @@ public class ResultFrm extends javax.swing.JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
+
+        Client.timeEnd = LocalDateTime.now();
         
         lblAvatar.setIcon(new ImageIcon(Client.user.getAvatar()));
         lblUsername.setText(Client.user.getUsername());
@@ -36,8 +40,14 @@ public class ResultFrm extends javax.swing.JFrame {
         // thêm điều kiện icon win or loss
         Message message = new Message("UPDATE_USER_REQUEST", resultGame);
 
+        // cập nhật lịch sử đấu
+        boolean isWin = resultGame.equals("win") ? true : false;
+        Histories history = new Histories(Client.timeStart, Client.timeEnd, isWin, 0, 0);
+        Message sendHistory = new Message("UPDATE_HISTORY_REQUEST", history);
+
         try {
             Client.socketHandle.write(message);
+            Client.socketHandle.write(sendHistory);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
