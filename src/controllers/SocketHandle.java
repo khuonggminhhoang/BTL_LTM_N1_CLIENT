@@ -109,6 +109,8 @@ public class SocketHandle implements Runnable {
                     Questions currentQuestion = (Questions) message.getObject();
                     Client.gameFrm.setCurrentQuestion(currentQuestion);
                     Client.gameFrm.setPoint1();
+                    
+                    Client.gameFrm.resetProgressBar();
                 }
 
                 if (message.getType().equals("ANSWER_TEMP_RESPONSE")) {
@@ -120,6 +122,8 @@ public class SocketHandle implements Runnable {
                     Questions currentQuestion = (Questions) message.getObject();
                     Client.gameFrm.setCurrentQuestion(currentQuestion);
                     Client.gameFrm.setPoint2();
+                    
+                    Client.gameFrm.resetProgressBar();
                 }
 
                 if (message.getType().equals("GAME_OVER")) {

@@ -27,6 +27,8 @@ public class GameFrm extends javax.swing.JFrame {
 
     static int point1 = 0;
     static int point2 = 0;
+    int progressValue = 100;
+    private Timer timer;
 
     /**
      * Creates new form GameFrm
@@ -54,11 +56,10 @@ public class GameFrm extends javax.swing.JFrame {
         jProgressBar1.setBackground(new Color(51, 51, 51)); // Nền tối
 
         add(jProgressBar1, BorderLayout.CENTER);
-
+        progressValue = 100;
         // Tạo timer để cập nhật thanh tiến trình
-        Timer timer = new Timer();
+        timer = new Timer();
         timer.schedule(new TimerTask() {
-            int progressValue = 100;
 
             @Override
             public void run() {
@@ -81,6 +82,16 @@ public class GameFrm extends javax.swing.JFrame {
             }
         }, 1000, 100);
 
+    }
+
+    @Override
+    public void dispose() {
+        timer.cancel();// Dừng timer
+        super.dispose();
+    }
+
+    public void resetProgressBar() {
+        progressValue = 100;
     }
 
     public void setCurrentQuestion(Questions currentQuestion) {
