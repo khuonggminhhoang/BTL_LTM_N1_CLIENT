@@ -33,9 +33,10 @@ public class ResultFrm extends javax.swing.JFrame {
         
         lblAvatar.setIcon(new ImageIcon(Client.user.getAvatar()));
         lblUsername.setText(Client.user.getUsername());
-        lblPoint.setText(String.valueOf(GameFrm.point1));
+        // lblPoint.setText(String.valueOf(GameFrm.point1));
 
         String resultGame = GameFrm.point1 < GameFrm.point2 ? "loss":  GameFrm.point1 == GameFrm.point2 ? "draw" : "win"; 
+        lblPoint.setText(resultGame.toUpperCase());
 
         // thêm điều kiện icon win or loss
         Message message = new Message("UPDATE_USER_REQUEST", resultGame);

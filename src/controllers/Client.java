@@ -5,8 +5,10 @@
 package controllers;
 
 
+import java.awt.Image;
 import java.time.LocalDateTime;
 import java.util.List;
+import javax.swing.ImageIcon;
 import model.Histories;
 import model.Users;
 import views.*;
@@ -130,20 +132,18 @@ public class Client{
     public void initView() {
         loginFrm = new LoginFrm();
         loginFrm.setVisible(true);
-        // registerFrm =new RegisterFrm();
-        // registerFrm.setVisible(true);
-        // homepageFrm=new HomepageFrm();
-        // homepageFrm.setVisible(true);
-        // roomListFrm=new RoomListFrm();
-        // roomListFrm.setVisible(true);
-        // waitingRoomFrm=new WaitingRoomFrm();
-        // waitingRoomFrm.setVisible(true);
-        // gameFrm=new GameFrm();
-        // gameFrm.setVisible(true);
-        // playerFrm=new PlayerFrm();
-        // playerFrm.setVisible(true);
         socketHandle = new SocketHandle();
         new Thread(socketHandle).start(); // Chạy SocketHandle trong một thread riêng
+    }
+
+    public static ImageIcon resizeImage(String pathImg) {
+        // Tạo ImageIcon và lấy kích thước ảnh gốc
+        ImageIcon originalIcon = new ImageIcon(pathImg);
+        
+        // Resize ảnh khớp với kích thước ảnh gốc
+        Image scaledImage = originalIcon.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
+        ImageIcon resizedIcon = new ImageIcon(scaledImage);
+        return resizedIcon;
     }
     
     

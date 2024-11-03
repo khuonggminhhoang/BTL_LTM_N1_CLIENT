@@ -35,8 +35,8 @@ public class RegisterFrm extends javax.swing.JFrame {
 
         // Đường dẫn tương đối chính xác và thêm ImageIcon vào JComboBox
         for (int i = 1; i <= 5; i++) {
-            ImageIcon icon = new ImageIcon("src/images/gautruc" + i + ".jpg");
-            avatarComboBox.addItem(icon);
+            // ImageIcon icon = new ImageIcon("src/images/gautruc" + i + ".gif");
+            avatarComboBox.addItem(Client.resizeImage("src/images/gautruc" + i + ".jpg"));
         }
 
         // Lấy ra đối tượng ImageIcon
@@ -107,7 +107,6 @@ public class RegisterFrm extends javax.swing.JFrame {
                 usernameFieldActionPerformed(evt);
             }
         });
-
 
         registerButton.setText("Đăng kí");
         registerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -185,12 +184,12 @@ public class RegisterFrm extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(confirmPasswordField)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(registerButton)
-                                    .addComponent(avatarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(confirmPasswordField))))
+                                    .addComponent(avatarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(45, 45, 45))
         );
         layout.setVerticalGroup(
@@ -210,14 +209,14 @@ public class RegisterFrm extends javax.swing.JFrame {
                     .addComponent(confirmPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cofirmPasswordLabel))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(avatarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(avatarComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(registerButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
