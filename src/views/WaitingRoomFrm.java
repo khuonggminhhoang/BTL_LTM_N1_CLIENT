@@ -80,6 +80,7 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
         roomCheckTimer.stop(); // Dừng timer
         super.dispose();
     }
+    
     public void setAmountPlayer(int amount) {
         amountPlayer = amount;
     }
