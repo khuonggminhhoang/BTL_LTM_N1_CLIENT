@@ -10,7 +10,6 @@ import javax.swing.ImageIcon;
 
 import controllers.Client;
 import model.Histories;
-import model.Users;
 
 /**
  *
@@ -78,7 +77,7 @@ public class HistoryFrm extends javax.swing.JFrame {
         for(int i=0;i<data.length;i++){
             Histories historie=hisLst.get(i);
             data[i][0]=historie.isWin()?"Thắng": "Thua";
-            data[i][1]=historie.getOpponent();
+            data[i][1]=historie.getOpponent().getUsername();
             data[i][2] =historie.getTimeStart();
             data[i][3] = historie.getTimeEnd();
 
@@ -173,7 +172,8 @@ public class HistoryFrm extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void btnReturnActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        // TODO add your handling code here:
+        Client.closeAllViews();
+        Client.openView(Client.View.HOMEPAGE);
     }                                         
 
     /**

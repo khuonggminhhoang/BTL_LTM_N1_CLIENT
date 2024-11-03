@@ -372,7 +372,7 @@ public class HomepageFrm extends javax.swing.JFrame {
     private void btnHistoryGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryGameActionPerformed
         Message message =new Message("GET_HISTORY_REQUEST",null);
         // System.out.println(message.getObject());
-        // System.out.println(message.getType());
+        System.out.println(message.getType());
         try {
             Client.socketHandle.write(message);
         } catch (IOException e) {
