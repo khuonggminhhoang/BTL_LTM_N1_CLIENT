@@ -31,6 +31,8 @@ public class HomepageFrm extends javax.swing.JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
+        System.out.println("alo tăng đi");
+
         jLabel7.setText(Client.user.getUsername());
         jLabel9.setText(Client.user.getNumberOfGame() + "");
         jLabel10.setText(Client.user.getNumberOfWin() + "");
@@ -45,6 +47,7 @@ public class HomepageFrm extends javax.swing.JFrame {
         }
          
         avatar.setIcon(Client.resizeImage(Client.user.getAvatar()));
+        
     }
     
     /**

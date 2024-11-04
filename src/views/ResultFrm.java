@@ -41,17 +41,14 @@ public class ResultFrm extends javax.swing.JFrame {
         else
             lblPoint.setIcon(Client.resizeImage(150, 150, "src/asset/background/game_over.png"));
 
-
-        // thêm điều kiện icon win or loss
-        Message message = new Message("UPDATE_USER_REQUEST", resultGame);
-
         // cập nhật lịch sử đấu
+        System.out.println(resultGame);
         boolean isWin = resultGame.equals("win") ? true : false;
         Histories history = new Histories(Client.timeStart, Client.timeEnd, isWin, null, null);
         Message sendHistory = new Message("UPDATE_HISTORY_REQUEST", history);
 
         try {
-            Client.socketHandle.write(message);
+            // Client.socketHandle.write(message);
             Client.socketHandle.write(sendHistory);
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -167,17 +164,20 @@ public class ResultFrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Message updatePlayerMessage = new Message("FINISH_GAME", GameFrm.point1);
+
+        String resultGame = GameFrm.point1 < GameFrm.point2 ? "loss":  GameFrm.point1 == GameFrm.point2 ? "draw" : "win"; 
+        System.out.println("Người chơi click thoát: " + resultGame);
+        // thêm điều kiện icon win or loss
+        Message message = new Message("UPDATE_USER_REQUEST", resultGame);
+
         try {
-                // Gửi message yêu cầu tham gia phòng đến server
-                Client.socketHandle.write(updatePlayerMessage);
-            } catch (IOException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Không thể gửi yêu cầu update game. Vui lòng thử lại.");
-            }
-        Client.closeAllViews();
-        Client.openView(Client.View.HOMEPAGE);
+            Client.socketHandle.write(message);
+            // Client.socketHandle.write(sendHistory);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
