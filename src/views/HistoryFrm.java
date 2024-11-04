@@ -7,6 +7,8 @@ package views;
 import java.util.List;
 
 import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import controllers.Client;
 import model.Histories;
@@ -99,6 +101,16 @@ public class HistoryFrm extends javax.swing.JFrame {
         });
         tableHistory.setRowHeight(30);
         jScrollPane1.setViewportView(tableHistory);
+
+        // Tạo DefaultTableCellRenderer để căn giữa chữ
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        // Áp dụng renderer cho từng cột
+        for (int i = 0; i < tableHistory.getColumnCount(); i++) {
+            tableHistory.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

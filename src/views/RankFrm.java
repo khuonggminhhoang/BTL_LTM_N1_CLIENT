@@ -10,6 +10,9 @@ import java.awt.datatransfer.ClipboardOwner;
 import javax.swing.ImageIcon;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
@@ -74,30 +77,28 @@ public class RankFrm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
-    
 
         List<Users> lst=Client.lst;
 
         // tạo ra 1 cái colection để sắp xếp người chơi theo tỷ lệ thắng giảm dần
         Collections.sort(lst,(user1,user2) ->{
             double rateWin1=(double) user1.getNumberOfWin()/user1.getNumberOfGame();
-            double rateWin2=(double) user2.getNumberOfWin()/user2.getNumberOfGame();     
-            return Double.compare(rateWin2, rateWin1);        
+            double rateWin2=(double) user2.getNumberOfWin()/user2.getNumberOfGame();
+            return Double.compare(rateWin2, rateWin1);
         });
 
-        
-        Object [][]data=new Object[lst.size()][3];
+
+        Object [][]data=new Object[lst.size()][2];
         for(int i=0;i<data.length;i++){
             Users user=lst.get(i);
-            data[i][0]=user.getId();
+            data[i][0]=i+1;
             data[i][1]=user.getUsername();
-            data[i][2]=i+1;
         }
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             data,
             new String [] {
-                "ID", "Tên người chơi", "Thứ hạng"
+               "Thứ hạng", "Tên người chơi"
             }
         ) {
             Class[] types = new Class [] {
@@ -108,7 +109,18 @@ public class RankFrm extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
+
+        // Tạo DefaultTableCellRenderer để căn giữa chữ
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+
+        // Áp dụng renderer cho từng cột
+        for (int i = 0; i < jTable1.getColumnCount(); i++) {
+            jTable1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
 
         jButton3.setText("Quay lại");
         jButton3.addActionListener(new java.awt.event.ActionListener() {

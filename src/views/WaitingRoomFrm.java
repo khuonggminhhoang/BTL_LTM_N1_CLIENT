@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import model.Message;
@@ -37,7 +38,12 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
         
         avatarOwner.setIcon(new ImageIcon(Client.user.getAvatar()));
         username.setText(Client.user.getUsername());
-        otherAvatar.setIcon(new ImageIcon("src/images/meoden.jpg"));
+        otherAvatar.setIcon(Client.resizeImage("src/images/meoden.jpg"));
+
+        ImageIcon gifIcon = Client.resizeImage("src/images/gautruc5.gif");
+
+        // Tạo JLabel và thiết lập ImageIcon cho JLabel
+        lblLoading.setIcon(gifIcon);
 
         roomCheckTimer = new Timer(1000, new ActionListener() {
             @Override
@@ -48,11 +54,10 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
                     Client.socketHandle.write(message);
                 } catch (IOException ex) {
                     Logger.getLogger(WaitingRoomFrm.class.getName()).log(Level.SEVERE, null, ex);
-                    System.out.println("loi ioe");
+                    
                 }
 
                 // Đợi phản hồi từ server và xử lý
-//                int amountPlayer = Itneger.parseInt((String) message.getType().equals("GET_ROOM_REQUEST"));
                 System.out.println(amountPlayer);
                 if (amountPlayer == 2) {
                     Client.closeAllViews();
@@ -96,13 +101,12 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lblIdRoom = new javax.swing.JLabel();
         progressBar = new javax.swing.JPanel();
         btnReturn = new javax.swing.JButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
         avatarOwner = new javax.swing.JLabel();
         otherAvatar = new javax.swing.JLabel();
         username = new javax.swing.JLabel();
+        lblLoading = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -119,34 +123,24 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Đang ghép");
 
-        lblIdRoom.setForeground(new java.awt.Color(255, 255, 255));
-        lblIdRoom.setText("ID: 001");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(189, 189, 189)
                 .addComponent(jLabel1)
-                .addGap(147, 147, 147))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblIdRoom)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblIdRoom)
-                .addContainerGap())
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         progressBar.setBackground(new java.awt.Color(102, 102, 102));
-        progressBar.setForeground(new java.awt.Color(153, 255, 102));
 
         btnReturn.setText("Quay lại");
         btnReturn.addActionListener(new java.awt.event.ActionListener() {
@@ -156,9 +150,12 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
         });
 
         avatarOwner.setBackground(new java.awt.Color(51, 255, 51));
+        avatarOwner.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 0, 255)));
 
         otherAvatar.setBackground(new java.awt.Color(255, 255, 255));
+        otherAvatar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 0, 255)));
 
+        username.setForeground(new java.awt.Color(255, 255, 255));
         username.setText("username");
 
         javax.swing.GroupLayout progressBarLayout = new javax.swing.GroupLayout(progressBar);
@@ -166,34 +163,34 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
         progressBarLayout.setHorizontalGroup(
             progressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(progressBarLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(progressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnReturn)
-                    .addGroup(progressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(username, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                        .addComponent(avatarOwner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(otherAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
-            .addGroup(progressBarLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addGroup(progressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(progressBarLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(avatarOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83)
+                        .addComponent(lblLoading, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addComponent(otherAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(progressBarLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(progressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnReturn)
+                            .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         progressBarLayout.setVerticalGroup(
             progressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, progressBarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(32, 32, 32)
                 .addGroup(progressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(otherAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(avatarOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(avatarOwner, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(otherAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLoading, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(username)
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnReturn)
-                .addGap(45, 45, 45))
+                .addGap(12, 12, 12))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -213,7 +210,7 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -279,8 +276,7 @@ public class WaitingRoomFrm extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JLabel lblIdRoom;
+    private javax.swing.JLabel lblLoading;
     private javax.swing.JLabel otherAvatar;
     private javax.swing.JPanel progressBar;
     private javax.swing.JLabel username;

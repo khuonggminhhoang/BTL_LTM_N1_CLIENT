@@ -33,9 +33,10 @@ public class ResultFrm extends javax.swing.JFrame {
         
         lblAvatar.setIcon(new ImageIcon(Client.user.getAvatar()));
         lblUsername.setText(Client.user.getUsername());
-        lblPoint.setText(String.valueOf(GameFrm.point1));
+        // lblPoint.setText(String.valueOf(GameFrm.point1));
 
         String resultGame = GameFrm.point1 < GameFrm.point2 ? "loss":  GameFrm.point1 == GameFrm.point2 ? "draw" : "win"; 
+        lblPoint.setText(resultGame.toUpperCase());
 
         // thêm điều kiện icon win or loss
         Message message = new Message("UPDATE_USER_REQUEST", resultGame);
@@ -66,7 +67,6 @@ public class ResultFrm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         lblPoint = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         lblAvatar = new javax.swing.JLabel();
@@ -99,9 +99,6 @@ public class ResultFrm extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Điểm:");
-
         lblPoint.setForeground(new java.awt.Color(255, 255, 255));
         lblPoint.setText("0");
 
@@ -130,11 +127,8 @@ public class ResultFrm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblUsername)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsername))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -143,9 +137,7 @@ public class ResultFrm extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(lblAvatar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lblPoint))
+                .addComponent(lblPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUsername)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -231,7 +223,6 @@ public class ResultFrm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblAvatar;

@@ -74,7 +74,7 @@ public class GameFrm extends javax.swing.JFrame {
                 }
 
             }
-        }, 1000, 100);
+        }, 1000, 1000);
 
     }
 
