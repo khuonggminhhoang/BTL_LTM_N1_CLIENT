@@ -89,8 +89,8 @@ public class GameFrm extends javax.swing.JFrame {
     }
 
     public void setCurrentQuestion(Questions currentQuestion) {
-        lblHint.setText(currentQuestion.getHint());
-        lblQuestion.setIcon(new ImageIcon(currentQuestion.getImgPath()));
+        lblHint.setText("Hint: " + currentQuestion.getHint());
+        lblQuestion.setIcon(Client.resizeImage(320, 160, currentQuestion.getImgPath()));
     }
 
     public void showError(String message) {
