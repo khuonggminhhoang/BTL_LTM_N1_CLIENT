@@ -145,6 +145,16 @@ public class Client{
         ImageIcon resizedIcon = new ImageIcon(scaledImage);
         return resizedIcon;
     }
+
+    public static ImageIcon resizeImage(int width, int height, String pathImg) {
+        // Tạo ImageIcon và lấy kích thước ảnh gốc
+        ImageIcon originalIcon = new ImageIcon(pathImg);
+        
+        // Resize ảnh khớp với kích thước ảnh gốc
+        Image scaledImage = originalIcon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT);
+        ImageIcon resizedIcon = new ImageIcon(scaledImage);
+        return resizedIcon;
+    }
     
     
     public enum View {

@@ -24,7 +24,7 @@ public class HistoryFrm extends javax.swing.JFrame {
      */
     public HistoryFrm() {
         initComponents();
-         this.setTitle("Game đuổi hình bắt chữ");
+        this.setTitle("Game đuổi hình bắt chữ");
         this.setIconImage(new ImageIcon("src/images/convit.jpg").getImage());
         this.setResizable(false);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
