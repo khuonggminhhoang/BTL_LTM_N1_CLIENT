@@ -21,6 +21,8 @@ public class ResultFrm extends javax.swing.JFrame {
     /**
      * Creates new form ResultFrm
      */
+    private String resultGame;
+
     public ResultFrm() {
         initComponents();
         this.setTitle("Game đuổi hình bắt chữ");
@@ -35,8 +37,8 @@ public class ResultFrm extends javax.swing.JFrame {
         lblUsername.setText("Điểm: " + GameFrm.point1);
         // lblPoint.setText(String.valueOf(GameFrm.point1));
 
-        String resultGame = GameFrm.point1 < GameFrm.point2 ? "loss":  GameFrm.point1 == GameFrm.point2 ? "draw" : "win"; 
-        if(resultGame.equals("win"))
+        this.resultGame = GameFrm.point1 < GameFrm.point2 ? "loss":  GameFrm.point1 == GameFrm.point2 ? "draw" : "win"; 
+        if(this.resultGame.equals("win"))
             lblPoint.setIcon(Client.resizeImage(150, 150, "src/asset/background/win_game.png"));
         else
             lblPoint.setIcon(Client.resizeImage(150, 150, "src/asset/background/game_over.png"));
@@ -164,10 +166,6 @@ public class ResultFrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        String resultGame = GameFrm.point1 < GameFrm.point2 ? "loss":  GameFrm.point1 == GameFrm.point2 ? "draw" : "win"; 
-        System.out.println("Người chơi click thoát: " + resultGame);
-        // thêm điều kiện icon win or loss
         Message message = new Message("UPDATE_USER_REQUEST", resultGame);
 
         try {
