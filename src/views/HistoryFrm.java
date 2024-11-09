@@ -78,7 +78,8 @@ public class HistoryFrm extends javax.swing.JFrame {
         Object[][]data=new Object[hisLst.size()][4];
         for(int i=0;i<data.length;i++){
             Histories historie=hisLst.get(i);
-            data[i][0]=historie.isWin()?"Thắng": "Thua";
+            String isWin = historie.isWin().equals("win") ? "Thắng" : historie.isWin().equals("loss") ? "Thua" : "Hòa";
+            data[i][0]=isWin;
             data[i][1]=historie.getOpponent().getUsername();
             data[i][2] =historie.getTimeStart();
             data[i][3] = historie.getTimeEnd();

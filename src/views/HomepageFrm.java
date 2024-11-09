@@ -31,8 +31,6 @@ public class HomepageFrm extends javax.swing.JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
-        System.out.println("alo tăng đi");
-
         jLabel7.setText(Client.user.getUsername());
         jLabel9.setText(Client.user.getNumberOfGame() + "");
         jLabel10.setText(Client.user.getNumberOfWin() + "");
@@ -365,6 +363,14 @@ public class HomepageFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGetRankActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        Message updateUserOffline = new Message("UPDATE_USER_OFFLINE_REQUEST", "");
+
+        try {
+            Client.socketHandle.write(updateUserOffline);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         Client.closeAllViews();
         Client.openView(Client.View.LOGIN);
     }//GEN-LAST:event_btnLogoutActionPerformed

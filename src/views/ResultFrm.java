@@ -45,13 +45,13 @@ public class ResultFrm extends javax.swing.JFrame {
 
         // cập nhật lịch sử đấu
         System.out.println(resultGame);
-        boolean isWin = resultGame.equals("win") ? true : false;
-        Histories history = new Histories(Client.timeStart, Client.timeEnd, isWin, null, null);
+        Histories history = new Histories(Client.timeStart, Client.timeEnd, this.resultGame, null, null);
         Message sendHistory = new Message("UPDATE_HISTORY_REQUEST", history);
+        Message updateUserPlaying = new Message("UPDATE_USER_PLAYING_REQUEST", "");
 
         try {
-            // Client.socketHandle.write(message);
             Client.socketHandle.write(sendHistory);
+            Client.socketHandle.write(updateUserPlaying);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -167,7 +167,8 @@ public class ResultFrm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Message message = new Message("UPDATE_USER_REQUEST", resultGame);
-
+        GameFrm.point1 = 0;
+        GameFrm.point2 = 0;
         try {
             Client.socketHandle.write(message);
             // Client.socketHandle.write(sendHistory);
