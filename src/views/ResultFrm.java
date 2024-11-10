@@ -39,9 +39,12 @@ public class ResultFrm extends javax.swing.JFrame {
 
         this.resultGame = GameFrm.point1 < GameFrm.point2 ? "loss":  GameFrm.point1 == GameFrm.point2 ? "draw" : "win"; 
         if(this.resultGame.equals("win"))
-            lblPoint.setIcon(Client.resizeImage(150, 150, "src/asset/background/win_game.png"));
-        else
-            lblPoint.setIcon(Client.resizeImage(150, 150, "src/asset/background/game_over.png"));
+            lblPoint.setIcon(Client.resizeImage(150, 150, "src/asset/background/victory.png"));
+        else if(this.resultGame.equals("loss"))
+            lblPoint.setIcon(Client.resizeImage(150, 150, "src/asset/background/defeat.png"));
+        else            
+            lblPoint.setIcon(Client.resizeImage(150, 150, "src/asset/background/draw.png"));
+            
 
         // cập nhật lịch sử đấu
         System.out.println(resultGame);
