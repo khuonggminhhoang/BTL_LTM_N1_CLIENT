@@ -108,6 +108,8 @@ public class GameFrm extends javax.swing.JFrame {
         point1++;
         lblPoint1.setText(String.valueOf(point1));
         if (point1 == 2) {
+            Client.closeAllViews();
+            Client.openView(Client.View.RESULT_FRM);
 //            Message sendWinMessage = new Message("WIN_GAME", "");
 //            try {
 //                // Gửi message yêu cầu tham gia phòng đến server
@@ -117,8 +119,7 @@ public class GameFrm extends javax.swing.JFrame {
 //                JOptionPane.showMessageDialog(this, "Không thể gửi yêu cầu win game. Vui lòng thử lại.");
 //            }
 //            if ((point1 + point2 == 3) || (point1 == 2 && point2 == 0) || (point1 == 0 && point2 == 2)) {
-//                Client.closeAllViews();
-//                Client.openView(Client.View.RESULT_FRM);
+
 //                point1 = 0;
 //                point2 = 0;
 //            }
@@ -130,6 +131,8 @@ public class GameFrm extends javax.swing.JFrame {
         lblPoint2.setText(String.valueOf(point2));
 
         if (point2 == 2) {
+            Client.closeAllViews();
+            Client.openView(Client.View.RESULT_FRM);
 //            Message sendWinMessage = new Message("OTHER_WIN_GAME", "");
 //            try {
 //                // Gửi message yêu cầu tham gia phòng đến server
