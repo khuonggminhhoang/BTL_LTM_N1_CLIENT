@@ -45,6 +45,7 @@ public class HomepageFrm extends javax.swing.JFrame {
         }
          
         avatar.setIcon(Client.resizeImage(Client.user.getAvatar()));
+        
     }
     
     /**
@@ -362,6 +363,14 @@ public class HomepageFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGetRankActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        Message updateUserOffline = new Message("UPDATE_USER_OFFLINE_REQUEST", "");
+
+        try {
+            Client.socketHandle.write(updateUserOffline);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         Client.closeAllViews();
         Client.openView(Client.View.LOGIN);
     }//GEN-LAST:event_btnLogoutActionPerformed

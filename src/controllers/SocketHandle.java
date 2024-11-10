@@ -156,6 +156,15 @@ public class SocketHandle implements Runnable {
                     Client.closeAllViews();
                     Client.openView(Client.View.HISTORY_FRM);
                 }
+
+                if(message.getType().equals("UPDATE_USER_CLIENT")){
+                    System.out.println("Update user client agian");
+                    Users u = (Users) message.getObject();
+                    Client.user = u;
+                    Client.closeAllViews();
+                    Client.openView(Client.View.HOMEPAGE);
+                }
+
             }
         } catch (IOException | ClassNotFoundException e) {
             System.err.println("Loi: " + e.getMessage());

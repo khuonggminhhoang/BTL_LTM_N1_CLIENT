@@ -21,6 +21,8 @@ public class ResultFrm extends javax.swing.JFrame {
     /**
      * Creates new form ResultFrm
      */
+    private String resultGame;
+
     public ResultFrm() {
         initComponents();
         this.setTitle("Game đuổi hình bắt chữ");
@@ -35,24 +37,21 @@ public class ResultFrm extends javax.swing.JFrame {
         lblUsername.setText("Điểm: " + GameFrm.point1);
         // lblPoint.setText(String.valueOf(GameFrm.point1));
 
-        String resultGame = GameFrm.point1 < GameFrm.point2 ? "loss":  GameFrm.point1 == GameFrm.point2 ? "draw" : "win"; 
-        if(resultGame.equals("win"))
+        this.resultGame = GameFrm.point1 < GameFrm.point2 ? "loss":  GameFrm.point1 == GameFrm.point2 ? "draw" : "win"; 
+        if(this.resultGame.equals("win"))
             lblPoint.setIcon(Client.resizeImage(150, 150, "src/asset/background/win_game.png"));
         else
             lblPoint.setIcon(Client.resizeImage(150, 150, "src/asset/background/game_over.png"));
 
-
-        // thêm điều kiện icon win or loss
-        Message message = new Message("UPDATE_USER_REQUEST", resultGame);
-
         // cập nhật lịch sử đấu
-        boolean isWin = resultGame.equals("win") ? true : false;
-        Histories history = new Histories(Client.timeStart, Client.timeEnd, isWin, null, null);
+        System.out.println(resultGame);
+        Histories history = new Histories(Client.timeStart, Client.timeEnd, this.resultGame, null, null);
         Message sendHistory = new Message("UPDATE_HISTORY_REQUEST", history);
+        Message updateUserPlaying = new Message("UPDATE_USER_PLAYING_REQUEST", "");
 
         try {
-            Client.socketHandle.write(message);
             Client.socketHandle.write(sendHistory);
+            Client.socketHandle.write(updateUserPlaying);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -167,17 +166,17 @@ public class ResultFrm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Message updatePlayerMessage = new Message("FINISH_GAME", GameFrm.point1);
+        Message message = new Message("UPDATE_USER_REQUEST", resultGame);
+        GameFrm.point1 = 0;
+        GameFrm.point2 = 0;
         try {
-                // Gửi message yêu cầu tham gia phòng đến server
-                Client.socketHandle.write(updatePlayerMessage);
-            } catch (IOException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Không thể gửi yêu cầu update game. Vui lòng thử lại.");
-            }
-        Client.closeAllViews();
-        Client.openView(Client.View.HOMEPAGE);
+            Client.socketHandle.write(message);
+            // Client.socketHandle.write(sendHistory);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
