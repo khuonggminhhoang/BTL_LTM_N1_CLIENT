@@ -164,6 +164,11 @@ public class SocketHandle implements Runnable {
                     Client.closeAllViews();
                     Client.openView(Client.View.HOMEPAGE);
                 }
+                
+//                if (message.getType().equals("ENDGAME_RESPONSE")) {
+//                    Client.gameFrm.processEndGame();
+//                    System.out.println("End game");
+//                }
 
             }
         } catch (IOException | ClassNotFoundException e) {
