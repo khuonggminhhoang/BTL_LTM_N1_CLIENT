@@ -36,7 +36,9 @@ public class RegisterFrm extends javax.swing.JFrame {
         // Đường dẫn tương đối chính xác và thêm ImageIcon vào JComboBox
         for (int i = 1; i <= 5; i++) {
             // ImageIcon icon = new ImageIcon("src/images/gautruc" + i + ".gif");
-            avatarComboBox.addItem(Client.resizeImage("src/images/gautruc" + i + ".jpg"));
+            ImageIcon avatar = Client.resizeImage("src/images/gautruc" + i + ".jpg");
+            avatar.setDescription("src/images/gautruc" + i + ".jpg");
+            avatarComboBox.addItem(avatar);
         }
 
         // Lấy ra đối tượng ImageIcon
