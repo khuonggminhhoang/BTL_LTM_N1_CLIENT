@@ -107,7 +107,7 @@ public class GameFrm extends javax.swing.JFrame {
     public void setPoint1() {
         point1++;
         lblPoint1.setText(String.valueOf(point1));
-        if (point1 == 2) {
+        if (point1 == 2 && point2 == 0) {
             Client.closeAllViews();
             Client.openView(Client.View.RESULT_FRM);
 //            Message sendWinMessage = new Message("WIN_GAME", "");
@@ -130,7 +130,7 @@ public class GameFrm extends javax.swing.JFrame {
         point2++;
         lblPoint2.setText(String.valueOf(point2));
 
-        if (point2 == 2) {
+        if (point2 == 2 && point1 == 0) {
             Client.closeAllViews();
             Client.openView(Client.View.RESULT_FRM);
 //            Message sendWinMessage = new Message("OTHER_WIN_GAME", "");
